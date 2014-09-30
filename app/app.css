@@ -28,7 +28,9 @@
 	padding: 0;
 }
 
-html,body {height:100%;}
+html, body {
+	height: 100%;
+}
 
 body {
 	background-color: #DADBDB;
@@ -60,9 +62,9 @@ body {
 	padding: 0 0 60px;
 }
 
-.container{
-	overflow:auto;
-    padding-bottom:30px;
+.container {
+	overflow: auto;
+	padding-bottom: 30px;
 }
 
 footer {
@@ -74,13 +76,14 @@ footer {
 	margin-top: -30px;
 	background-color: #A7B0B8;
 	color: white;
-	margin-left: 55px;
-	margin-right: 55px;
+	margin-left: 8%;
+	margin-right: 8%;
+	border-radius: 5px;
 }
 
 .storageDiv {
 	float: right;
-	margin-right: 100px;
+	margin-right: 10px;
 }
 
 .profileListDiv {
@@ -93,4 +96,19 @@ footer {
 
 .providerListDiv {
 	margin: 20px 0px;
+}
+
+#profileDtlPnl {
+	float: left;
+	width: 40%;
+	margin-right: 2%;
+}
+
+#storagePnl {
+	display: inline-block;
+	width: 58%;
+}
+
+.alert{
+	margin-top: 10px;
 }

@@ -3,116 +3,131 @@
 		<div class="form-group DashboardSrchDiv">
 			<label for="exampleFilter">Search Provider</label> <input
 				type="search" class="form-control"
-				placeholder="-- By ID/ Name/ Email --"
-				ng-model="providerSrchStr">
+				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr">
 			<button type="submit" class="btn btn-primary"
 				ng-click="searchProvider()">Search</button>
 		</div>
 	</form>
+	<div class="alert alert-danger alert-dismissible" role="alert"
+		ng-show="noProviderErr">{{noProviderAlrtMsg}}</div>
 	<div class="gridclass providerListDiv">
 		<table class="table table-striped">
 			<tr>
+				<th>ID</th>
 				<th>NAME</th>
 				<th>EMAIL</th>
 			</tr>
 			<tr ng-repeat="provider in providers">
-				<td><a href="" ng-click="getProfile(provider.provider_id)">{{provider.name}}</a></td>
+				<td><a href="" ng-click="getProfile(provider.provider_id)">{{provider.provider_id}}</a></td>
+				<td>{{provider.name}}</td>
 				<td>{{provider.email}}</td>
 			</tr>
 		</table>
 	</div>
 
-	<div class="profileListDiv" ng-show="providerSelected">
-		<fieldset>
+	<div id="profileDtlPnl" class="panel panel-default"
+		ng-show="providerSelected">
+		<div class="panel-body">
+			<div class="profileListDiv">
+				<fieldset>
 
-			<!-- Form Name -->
-			<legend>Profile List</legend>
-			<form class="form-inline" role="form">
-				<div class="Profdiv">
-					<table class="table table-striped">
-						<tr>
-							<th>PROFILE</th>
-						</tr>
-						<tr ng-repeat="profile in profiles">
-							<td><a href="#/providers/{{profile.profile_id}}">{{profile.name}}</a></td>
-						</tr>
-					</table>
-					<button type="submit" class="btn btn-primary" ng-click="">Edit
-						Profile</button>
-					<button type="submit" class="btn btn-primary" ng-click="">New
-						Profile</button>
-				</div>
-			</form>
-		</fieldset>
+					<!-- Form Name -->
+					<legend>View Profile</legend>
+					<form class="form-inline" role="form">
+						<div class="Profdiv">
+							<table class="table table-striped">
+								<tr>
+									<th>PROFILE</th>
+								</tr>
+								<tr ng-repeat="profile in profiles">
+									<td><a href="#/providers/{{profile.profile_id}}">{{profile.name}}</a></td>
+								</tr>
+							</table>
+							<button type="submit" class="btn btn-primary" ng-click="">Edit
+								Profile</button>
+							<button type="submit" class="btn btn-primary" ng-click="">New
+								Profile</button>
+						</div>
+					</form>
+				</fieldset>
+			</div>
+		</div>
 	</div>
-	<div class="storageDiv" ng-show="providerSelected">
 
-		<form class="form-horizontal">
-			<fieldset>
+	<div id="storagePnl" class="panel panel-default"
+		ng-show="providerSelected">
+		<div class="panel-body">
 
-				<!-- Form Name -->
-				<legend>Storage Location</legend>
+			<div class="storageDiv">
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
-					<div class="col-md-7">
-						<input id="name" name="name" type="text" placeholder="Name"
-							class="form-control input-md">
+				<form class="form-horizontal">
+					<fieldset>
 
-					</div>
-				</div>
+						<!-- Form Name -->
+						<legend>Storage Configuration</legend>
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="type">Type</label>
-					<div class="col-md-7">
-						<input id="type" name="type" type="text" placeholder="Type"
-							class="form-control input-md">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
+							<div class="col-md-7">
+								<input id="name" name="name" type="text" placeholder="Name"
+									class="form-control input-md">
 
-					</div>
-				</div>
+							</div>
+						</div>
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="bucket">Bucket</label>
-					<div class="col-md-7">
-						<input id="bucket" name="bucket" type="text" placeholder="bucket"
-							class="form-control input-md">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-5 control-label" for="type">Type</label>
+							<div class="col-md-7">
+								<input id="type" name="type" type="text" placeholder="Type"
+									class="form-control input-md">
 
-					</div>
-				</div>
+							</div>
+						</div>
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="accesskeyid">Access
-						Key ID</label>
-					<div class="col-md-7">
-						<input id="accesskeyid" name="accesskeyid" type="text"
-							placeholder="Access Key ID" class="form-control input-md">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-5 control-label" for="bucket">Bucket</label>
+							<div class="col-md-7">
+								<input id="bucket" name="bucket" type="text"
+									placeholder="bucket" class="form-control input-md">
 
-					</div>
-				</div>
+							</div>
+						</div>
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="key">Key</label>
-					<div class="col-md-7">
-						<input id="key" name="key" type="text" placeholder="Key"
-							class="form-control input-md">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-5 control-label" for="accesskeyid">Access
+								Key ID</label>
+							<div class="col-md-7">
+								<input id="accesskeyid" name="accesskeyid" type="text"
+									placeholder="Access Key ID" class="form-control input-md">
 
-					</div>
-				</div>
+							</div>
+						</div>
 
-				<div class="form-group">
-					<div style="margin-left: 155px;">
-						<button type="submit" class="btn btn-primary" ng-click="">Save</button>
-						<button type="submit" class="btn btn-primary" ng-click="">New</button>
-					</div>
-				</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-5 control-label" for="key">Key</label>
+							<div class="col-md-7">
+								<input id="key" name="key" type="text" placeholder="Key"
+									class="form-control input-md">
 
-			</fieldset>
-		</form>
+							</div>
+						</div>
 
+						<div class="form-group">
+							<div style="margin-left: 164px;">
+								<button type="submit" class="btn btn-primary" ng-click="">Save</button>
+								<button type="submit" class="btn btn-primary" ng-click="">New</button>
+							</div>
+						</div>
+
+					</fieldset>
+				</form>
+
+			</div>
+		</div>
 	</div>
 </div>
