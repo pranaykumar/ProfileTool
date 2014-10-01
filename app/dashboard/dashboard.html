@@ -44,12 +44,32 @@
 							<form class="form-inline" role="form">
 								<div class="Profdiv">
 									<table class="table table-striped">
-										<tr>
+										<!-- <tr>
 											<th>PROFILE</th>
+										</tr>-->
+										<label class="checkbox"> <input type="checkbox"
+											ng-model="oneAtATime"> Open only one at a time
+										</label>
+										<tr>
+											<accordion close-others="oneAtATime"> <accordion-group
+												heading="{{profile.name}}" ng-repeat="profile in profiles">
+											Name - {{profile.name}} </accordion-group> </accordion>
 										</tr>
-										<tr ng-repeat="profile in profiles">
-											<td><a href="#/providers/{{profile.profile_id}}">{{profile.name}}</a></td>
-										</tr>
+										<!--  <tr ng-repeat="profile in profiles">
+											<td><accordion close-others="oneAtATime"> <accordion-group
+													is-open="status.open" is-open="status.isFirstOpen" >
+												<accordion-heading> <a
+													href="#/providers/{{profile.profile_id}}">{{profile.name}}</a>
+												<i class="pull-right glyphicon"
+													ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+												</accordion-heading>
+												<table class="table table-bordered">
+													<tr>
+														<td>Name - {{profile.name}}</td>
+													</tr>
+												</table>
+												</accordion-group> </accordion></td>
+										</tr>-->
 									</table>
 									<button type="submit" class="btn btn-primary" ng-click="">Edit
 										Profile</button>
