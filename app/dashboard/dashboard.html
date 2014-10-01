@@ -1,11 +1,11 @@
 <div ng-controller="providersCntrl">
-	<form class="form-inline" role="form">
+	<form class="form-inline" role="form" name="providerSrcForm">
 		<div class="form-group DashboardSrchDiv">
 			<label for="exampleFilter">Search Provider</label> <input
 				type="search" class="form-control"
-				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr">
+				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr" required>
 			<button type="submit" class="btn btn-primary"
-				ng-click="searchProvider()">Search</button>
+				ng-click="searchProvider()" ng-disabled="!providerSrcForm.$valid">Search</button>
 		</div>
 	</form>
 	<div class="alert alert-danger alert-dismissible" role="alert"
@@ -68,7 +68,7 @@
 
 					<div class="storageDiv">
 
-						<form class="form-horizontal">
+						<form name="storageConfigForm" class="form-horizontal">
 							<fieldset>
 
 								<!-- Form Name -->
@@ -80,7 +80,7 @@
 									<div class="col-md-7">
 										<input id="name" name="name" type="text" placeholder="Name"
 											class="form-control input-md"
-											value="{{storageConfigStub.name}}">
+											value="{{storageConfigStub.name}}" required>
 
 									</div>
 								</div>
@@ -89,19 +89,19 @@
 									<label class="col-md-5 control-label" for="type">Type</label>
 									<div class="col-md-7">
 										<select id="type" name="type" class="form-control">
-											<option ng-repeat="storageType in storageTypeStub" value="storageType.id">{{storageType.name}}</option>
+											<option ng-repeat="storageType in storageTypeStub"
+												value="storageType.id">{{storageType.name}}</option>
 										</select>
 									</div>
 								</div>
 
-								<!-- Text input-->
+								<!-- URL input-->
 								<div class="form-group">
 									<label class="col-md-5 control-label" for="bucket">Bucket</label>
 									<div class="col-md-7">
-										<input id="bucket" name="bucket" type="text"
+										<input id="bucket" name="bucket" type="url"
 											placeholder="bucket" class="form-control input-md"
-											value="{{storageConfigStub.bucket}}">
-
+											value="{{storageConfigStub.bucket}}" required>
 									</div>
 								</div>
 
@@ -112,7 +112,7 @@
 									<div class="col-md-7">
 										<input id="accesskeyid" name="accesskeyid" type="text"
 											placeholder="Access Key ID" class="form-control input-md"
-											value="{{storageConfigStub.accessKeyId}}">
+											value="{{storageConfigStub.accessKeyId}}" required>
 
 									</div>
 								</div>
@@ -123,15 +123,15 @@
 									<div class="col-md-7">
 										<input id="key" name="key" type="text" placeholder="Key"
 											class="form-control input-md"
-											value="{{storageConfigStub.key}}">
+											value="{{storageConfigStub.key}}" required>
 
 									</div>
 								</div>
 
 								<div class="form-group">
 									<div style="margin-left: 164px;">
-										<button type="submit" class="btn btn-primary" ng-click="">Save</button>
-										<button type="submit" class="btn btn-primary" ng-click="">New</button>
+										<button type="submit" class="btn btn-primary" ng-click="clk()" ng-disabled="!storageConfigForm.$valid">Save</button>
+										<button type="submit" class="btn btn-primary" ng-click="cls()">New</button>
 									</div>
 								</div>
 
