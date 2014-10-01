@@ -17,7 +17,7 @@ angular
 				function($scope, $http, ProfileService) {
 					$scope.providerSrchStr = '';
 					$scope.providerSelected = false;
-					
+
 					$scope.searchProvider = function() {
 
 						$scope.noProviderAlrtMsg = '';
@@ -35,16 +35,12 @@ angular
 												$scope.noProviderAlrtMsg = "No Provider found for the given criteria!";
 												$scope.noProviderErr = true;
 											}
-
-											console.log($scope.providerSrchStr
-													+ $scope.noProviderErr
-													+ $scope.noProviderAlrtMsg);
 										});
-
 					};
 
 					$scope.getProfile = function(provider_id) {
-						$scope.providerSelected = true;
+						$scope.isProviderSelected = true;
+						$scope.selectedProvider = provider_id;
 
 						ProfileService.getProfiles(provider_id).then(
 								function(data) {
