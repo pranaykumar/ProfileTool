@@ -4,7 +4,8 @@
 angular.module('profileApp', [
   'ngRoute',
   'ui.bootstrap',
-  'profileApp.dashboard'
+  'profileApp.dashboard',
+  'profileApp.storageconfig'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/providers'});

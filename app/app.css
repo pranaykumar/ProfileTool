@@ -86,6 +86,11 @@ footer {
 	margin-right: 10px;
 }
 
+.newStorageDiv{
+	float: left;
+	margin-left: 10px;
+}
+
 .profileListDiv {
 	float: left;
 }
