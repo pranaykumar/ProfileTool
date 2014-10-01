@@ -31,6 +31,7 @@ angular
 								.success(
 										function(data) {
 											$scope.providers = data;
+											console.log($scope.providers);
 											if (data.length === 0) {
 												$scope.noProviderAlrtMsg = "No Provider found for the given criteria!";
 												$scope.noProviderErr = true;
@@ -41,6 +42,7 @@ angular
 					$scope.getProfile = function(provider_id) {
 						$scope.isProviderSelected = true;
 						$scope.selectedProvider = provider_id;
+						$scope.storageConfigStub = storageConfigStub;
 
 						ProfileService.getProfiles(provider_id).then(
 								function(data) {
@@ -78,3 +80,11 @@ angular
 						}
 					};
 				});
+
+var storageConfigStub = {
+	name : 'Storage Config 1',
+	type : 'S3',
+	bucket : 'https://s3.amazonaws.com/bucket/object',
+	accessKeyId : 'test_id',
+	key : 'test_key'
+}
