@@ -43,7 +43,8 @@ angular
 						$scope.isProviderSelected = true;
 						$scope.selectedProvider = provider_id;
 						$scope.storageConfigStub = storageConfigStub;
-
+						$scope.storageTypeStub = storageTypeStub;
+						
 						ProfileService.getProfiles(provider_id).then(
 								function(data) {
 									$scope.profiles = data;
@@ -87,4 +88,21 @@ var storageConfigStub = {
 	bucket : 'https://s3.amazonaws.com/bucket/object',
 	accessKeyId : 'test_id',
 	key : 'test_key'
-}
+};
+
+var storageTypeStub = [ {
+	name : 'S3',
+	id : '1'
+}, {
+	name : 'WebDav',
+	id : '2'
+}, {
+	name : 'Netstorage',
+	id : '3'
+}, {
+	name : 'Azure',
+	id : '4'
+}, {
+	name : 'SFTP',
+	id : '5'
+} ];

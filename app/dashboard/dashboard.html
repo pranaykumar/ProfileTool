@@ -79,18 +79,18 @@
 									<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
 									<div class="col-md-7">
 										<input id="name" name="name" type="text" placeholder="Name"
-											class="form-control input-md" value="{{storageConfigStub.name}}">
+											class="form-control input-md"
+											value="{{storageConfigStub.name}}">
 
 									</div>
 								</div>
 
-								<!-- Text input-->
 								<div class="form-group">
 									<label class="col-md-5 control-label" for="type">Type</label>
 									<div class="col-md-7">
-										<input id="type" name="type" type="text" placeholder="Type"
-											class="form-control input-md" value="{{storageConfigStub.type}}">
-
+										<select id="type" name="type" class="form-control">
+											<option ng-repeat="storageType in storageTypeStub" value="storageType.id">{{storageType.name}}</option>
+										</select>
 									</div>
 								</div>
 
@@ -99,7 +99,8 @@
 									<label class="col-md-5 control-label" for="bucket">Bucket</label>
 									<div class="col-md-7">
 										<input id="bucket" name="bucket" type="text"
-											placeholder="bucket" class="form-control input-md" value="{{storageConfigStub.bucket}}">
+											placeholder="bucket" class="form-control input-md"
+											value="{{storageConfigStub.bucket}}">
 
 									</div>
 								</div>
@@ -110,7 +111,8 @@
 										Key ID</label>
 									<div class="col-md-7">
 										<input id="accesskeyid" name="accesskeyid" type="text"
-											placeholder="Access Key ID" class="form-control input-md" value="{{storageConfigStub.accessKeyId}}">
+											placeholder="Access Key ID" class="form-control input-md"
+											value="{{storageConfigStub.accessKeyId}}">
 
 									</div>
 								</div>
@@ -120,7 +122,8 @@
 									<label class="col-md-5 control-label" for="key">Key</label>
 									<div class="col-md-7">
 										<input id="key" name="key" type="text" placeholder="Key"
-											class="form-control input-md" value="{{storageConfigStub.key}}">
+											class="form-control input-md"
+											value="{{storageConfigStub.key}}">
 
 									</div>
 								</div>

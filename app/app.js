@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('profileApp', [
   'ngRoute',
+  'ui.bootstrap',
   'profileApp.dashboard'
 ]).
 config(['$routeProvider', function($routeProvider) {
