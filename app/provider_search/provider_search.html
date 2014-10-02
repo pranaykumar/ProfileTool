@@ -1,0 +1,31 @@
+<div ng-controller="providerSearchController">
+	<ol class="breadcrumb">
+		<li class="active"><a href="#/providers">Home</a></li>
+	</ol>
+	<form class="form-inline" role="form" name="providerSrcForm">
+		<div class="form-group DashboardSrchDiv">
+			<label for="exampleFilter">Search Provider</label> <input
+				type="search" class="form-control"
+				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr"
+				required focus>
+			<button type="submit" class="btn btn-primary"
+				ng-click="searchProvider()" ng-disabled="!providerSrcForm.$valid">Search</button>
+		</div>
+	</form>
+	<div class="alert alert-danger alert-dismissible" role="alert"
+		ng-show="noProviderErr">{{noProviderAlrtMsg}}</div>
+
+	<div class="gridclass providerListDiv">
+		<table class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>EMAIL</th>
+			</tr>
+			<tr ng-repeat="provider in providers">
+				<td><a href="#/providers/{{provider.provider_id}}">{{provider.provider_id}}</a></td>
+				<td>{{provider.name}}</td>
+				<td>{{provider.email}}</td>
+			</tr>
+		</table>
+	</div>

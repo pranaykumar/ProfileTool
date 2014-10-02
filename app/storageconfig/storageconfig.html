@@ -1,73 +1,78 @@
-				<div class="newStorageDiv" ng-controller="storageconfigCntrl">
 
-						<form name="storageConfigForm" class="form-horizontal">
-							<fieldset>
+<ol class="breadcrumb">
+	<li><a href="#/providers">Home</a></li>
+	<li class="active">New Storage Configuration</li>
+</ol>
+<div id="storagePnl" class="panel panel-default">
+	<div class="panel-body">
 
-								<!-- Form Name -->
-								<legend>Storage Configuration</legend>
+		<div class="newStorageDiv" ng-controller="storageconfigCntrl">
 
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
-									<div class="col-md-7">
-										<input id="name" name="name" type="text" placeholder="Name"
-											class="form-control input-md"
-											required>
+			<form name="storageConfigForm" class="form-horizontal">
+				<fieldset>
 
-									</div>
-								</div>
+					<!-- Form Name -->
+					<legend>Storage Configuration</legend>
 
-								<div class="form-group">
-									<label class="col-md-5 control-label" for="type">Type</label>
-									<div class="col-md-7">
-										<select id="type" name="type" class="form-control">
-											<option ng-repeat="storageType in storageTypeStub"
-												>{{storageType.name}}</option>
-										</select>
-									</div>
-								</div>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
+						<div class="col-md-7">
+							<input id="name" name="name" type="text" placeholder="Name"
+								class="form-control input-md" required>
 
-								<!-- URL input-->
-								<div class="form-group">
-									<label class="col-md-5 control-label" for="bucket">Bucket</label>
-									<div class="col-md-7">
-										<input id="bucket" name="bucket" type="url"
-											placeholder="bucket" class="form-control input-md"
-											 required>
-									</div>
-								</div>
-
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-5 control-label" for="accesskeyid">Access
-										Key ID</label>
-									<div class="col-md-7">
-										<input id="accesskeyid" name="accesskeyid" type="text"
-											placeholder="Access Key ID" class="form-control input-md"
-											 required>
-
-									</div>
-								</div>
-
-								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-5 control-label" for="key">Key</label>
-									<div class="col-md-7">
-										<input id="key" name="key" type="text" placeholder="Key"
-											class="form-control input-md"
-											 required>
-
-									</div>
-								</div>
-
-								<div class="form-group">
-									<div style="margin-left: 164px;">
-										<button type="submit" class="btn btn-primary" ng-click="clk()"
-											ng-disabled="!storageConfigForm.$valid">Save</button>
-									</div>
-								</div>
-
-							</fieldset>
-						</form>
+						</div>
 					</div>
-	
+
+					<div class="form-group">
+						<label class="col-md-5 control-label" for="type">Type</label>
+						<div class="col-md-7">
+							<select id="type" name="type" class="form-control">
+								<option ng-repeat="storageType in storageTypeStub">{{storageType.name}}</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- URL input-->
+					<div class="form-group">
+						<label class="col-md-5 control-label" for="bucket">Bucket</label>
+						<div class="col-md-7">
+							<input id="bucket" name="bucket" type="url" placeholder="bucket"
+								class="form-control input-md" required>
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-5 control-label" for="accesskeyid">Access
+							Key ID</label>
+						<div class="col-md-7">
+							<input id="accesskeyid" name="accesskeyid" type="text"
+								placeholder="Access Key ID" class="form-control input-md"
+								required>
+
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-5 control-label" for="key">Key</label>
+						<div class="col-md-7">
+							<input id="key" name="key" type="text" placeholder="Key"
+								class="form-control input-md" required>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div style="margin-left: 164px;">
+							<button type="submit" class="btn btn-primary" ng-click="clk()"
+								ng-disabled="!storageConfigForm.$valid">Save</button>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

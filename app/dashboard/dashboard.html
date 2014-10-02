@@ -1,30 +1,8 @@
 <div ng-controller="providersCntrl">
-	<form class="form-inline" role="form" name="providerSrcForm">
-		<div class="form-group DashboardSrchDiv">
-			<label for="exampleFilter">Search Provider</label> <input
-				type="search" class="form-control"
-				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr"
-				required>
-			<button type="submit" class="btn btn-primary"
-				ng-click="searchProvider()" ng-disabled="!providerSrcForm.$valid">Search</button>
-		</div>
-	</form>
-	<div class="alert alert-danger alert-dismissible" role="alert"
-		ng-show="noProviderErr">{{noProviderAlrtMsg}}</div>
-	<div class="gridclass providerListDiv">
-		<table class="table table-striped">
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-				<th>EMAIL</th>
-			</tr>
-			<tr ng-repeat="provider in providers">
-				<td><a href="" ng-click="getProfile(provider.provider_id)">{{provider.provider_id}}</a></td>
-				<td>{{provider.name}}</td>
-				<td>{{provider.email}}</td>
-			</tr>
-		</table>
-	</div>
+	<ol class="breadcrumb">
+		<li class="active"><a href="#/providers">Home</a></li>
+		<li class="active"><a href="#/providers/{{selectedProvider}}">Provider ID {{selectedProvider}}</a></li>
+	</ol>
 
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -34,8 +12,7 @@
 		<div class="panel-body">
 
 
-			<div id="profileDtlPnl" class="panel panel-default"
-				ng-show="isProviderSelected">
+			<div id="profileDtlPnl" class="panel panel-default">
 				<div class="panel-body">
 					<div class="profileListDiv">
 						<fieldset>
@@ -67,7 +44,7 @@
 											</ul>
 
 											</accordion-group> <accordion-group is-open="status.open"> <accordion-heading>
-											Test Profile <i class="pull-right glyphicon"
+											<span>Test Profile</span> <i class="pull-right glyphicon"
 												ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 											</accordion-heading> Test Profile Details </accordion-group> </accordion>
 										</tr>
@@ -86,8 +63,7 @@
 				</div>
 			</div>
 
-			<div id="storagePnl" class="panel panel-default"
-				ng-show="isProviderSelected">
+			<div id="storagePnl" class="panel panel-default">
 				<div class="panel-body">
 
 					<div class="storageDiv">

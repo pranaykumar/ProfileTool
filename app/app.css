@@ -39,8 +39,8 @@ body {
 #hdrdiv {
 	background-color: #fff;
 	border-bottom: 1px solid #e9e9e9;
-	padding: 20px 10px 10px 10px;
-	border-radius: 5px;
+	padding: 10px;
+	border-radius: 4px;
 	margin-top: 10px;
 }
 
@@ -86,7 +86,7 @@ footer {
 	margin-right: 10px;
 }
 
-.newStorageDiv{
+.newStorageDiv {
 	float: left;
 	margin-left: 10px;
 }
@@ -96,7 +96,8 @@ footer {
 }
 
 .DashboardSrchDiv {
-	margin: 20px 0px;
+	/* 	margin: 20px 0px; */
+	
 }
 
 .providerListDiv {
@@ -114,6 +115,12 @@ footer {
 	width: 58%;
 }
 
-.alert{
+.alert {
 	margin-top: 10px;
 }
+
+.breadcrumb {
+	padding: 5px 15px;
+	margin-bottom: 2px;
+}
+
