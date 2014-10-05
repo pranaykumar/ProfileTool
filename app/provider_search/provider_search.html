@@ -1,31 +1,38 @@
 <div ng-controller="providerSearchController">
-	<ol class="breadcrumb">
-		<li class="active"><a href="#/providers">Home</a></li>
-	</ol>
-	<form class="form-inline" role="form" name="providerSrcForm">
-		<div class="form-group DashboardSrchDiv">
-			<label for="exampleFilter">Search Provider</label> <input
-				type="search" class="form-control"
-				placeholder="-- By ID/ Name/ Email --" ng-model="providerSrchStr"
-				required focus>
-			<button type="submit" class="btn btn-primary"
-				ng-click="searchProvider()" ng-disabled="!providerSrcForm.$valid">Search</button>
+	<form role="form" name="providerSrcForm">
+		<div class="form-group">
+			<label class="sr-only" for="provider">Search Provider</label>
+			<div class="row">
+				<div class="col-lg-3">
+					<input id="searchbox" type="search" class="form-control"
+						placeholder="Search provider by name, ID or email"
+						ng-model="providerSrchStr" ng-change="searchProvider()" required
+						focus>
+				</div>
+			</div>
 		</div>
 	</form>
+
 	<div class="alert alert-danger alert-dismissible" role="alert"
 		ng-show="noProviderErr">{{noProviderAlrtMsg}}</div>
 
-	<div class="gridclass providerListDiv">
+	<div class="gridclass">
 		<table class="table table-striped">
 			<tr>
-				<th>ID</th>
 				<th>NAME</th>
+				<th>ID</th>
 				<th>EMAIL</th>
+				<th>PROCESSING PROFILES</th>
 			</tr>
 			<tr ng-repeat="provider in providers">
-				<td><a href="#/providers/{{provider.provider_id}}">{{provider.provider_id}}</a></td>
 				<td>{{provider.name}}</td>
+				<td><a href="#/providers/{{provider.provider_id}}">{{provider.provider_id}}</a></td>
 				<td>{{provider.email}}</td>
+				<td>
+					<span>{{provider.profile_count}}</span>
+					<a class="btn btn-primary MyClass1" href="#/providers/{{provider.provider_id}}" profile-hover>MANAGE PROFILES</a>
+				</td>
+
 			</tr>
 		</table>
 	</div>

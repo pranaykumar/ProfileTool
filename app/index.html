@@ -8,32 +8,45 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>My AngularJS App</title>
+<title>Profile Tool</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
 	href="bower_components/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="app.css" />
 </head>
-<body style="background-color: #EBEEF0;">
+<body>	
 	<div class="wrap">
-		<div class="container">
+		<div id='hdrdiv'>
+			<img alt="logo" src="images/ooyala-logo.png"> <span id="hdrtxt">Profile
+				Configuration Tool</span>
+		</div>
+		<div class="toolPanel panel-default">
+			<div id="logoPanelBody" class="panel-body">
+				<span>PROCESSING PROFILE LOGO</span>
+			</div>
+		</div>
+		<div class="toolPanel"
+			style="border-bottom: 1px solid #ddd; background-color: #fff;">
+			<div
+				style="padding: 5px 20px; background-color: #ddd; width: 107px; font-weight: bold; color: #333;">PROVIDERS</div>
+		</div>
+		<div class="toolContainer">
 			<!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-			<div id='hdrdiv'>
-				<img alt="logo" src="images/ooyala-logo.png"> <span
-					id="hdrtxt">Profile Configuration Tool</span>
-			</div>
+
 			<div ng-view></div>
 		</div>
 
 	</div>
 	<footer>
-		<p>
-			<img alt="Ooyala logo" src="images/ooyala-logo-footer.png"> ©
-			2014 Ooyala, Inc. All Rights Reserved
-		</p>
+		<img alt="Ooyala logo" src="images/ooyala-logo-footer.png"> ©
+		2014 Ooyala, Inc. All Rights Reserved
 	</footer>
 
 	<!-- In production use:
