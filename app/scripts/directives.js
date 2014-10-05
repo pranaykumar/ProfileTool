@@ -26,3 +26,20 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 		}
 	}
 })
+
+.directive('tableRowhover', function($compile) {
+	return {
+		restrict : 'A',
+		link : function(scope, element) {
+			element.bind('mouseover', function() {
+				element.removeClass('rowout');
+				element.addClass('rowhover');
+			});
+
+			element.bind('mouseout', function() {
+				element.removeClass('rohover');
+				element.addClass('rowout');
+			});	
+		}
+	}
+});

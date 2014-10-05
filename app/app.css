@@ -89,10 +89,6 @@ footer {
 	margin-left: 10px;
 }
 
-.profileListDiv {
-	float: left;
-}
-
 .DashboardSrchDiv {
 	/* 	margin: 20px 0px; */
 	
@@ -102,6 +98,7 @@ footer {
 	float: left;
 	width: 40%;
 	margin-right: 2%;
+	border-width: 0px;
 }
 
 #storagePnl {
@@ -114,8 +111,7 @@ footer {
 }
 
 .breadcrumb {
-	padding: 5px 15px;
-	margin-bottom: 2px;
+	margin-bottom: 0px;
 }
 
 table {
@@ -153,6 +149,14 @@ th {
 	opacity: 1;
 }
 
-.MyClass1{
-		opacity: 0;
+.MyClass1 {
+	opacity: 0;
+}
+
+.rowhover {
+	background-color: #eee;
+}
+
+.rowout {
+	background-color: #fff;
 }

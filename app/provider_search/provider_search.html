@@ -17,14 +17,14 @@
 		ng-show="noProviderErr">{{noProviderAlrtMsg}}</div>
 
 	<div class="gridclass">
-		<table class="table table-striped">
+		<table class="table">
 			<tr>
 				<th>NAME</th>
 				<th>ID</th>
 				<th>EMAIL</th>
 				<th>PROCESSING PROFILES</th>
 			</tr>
-			<tr ng-repeat="provider in providers">
+			<tr ng-repeat="provider in providers" class="rowout" table-Rowhover>
 				<td>{{provider.name}}</td>
 				<td><a href="#/providers/{{provider.provider_id}}">{{provider.provider_id}}</a></td>
 				<td>{{provider.email}}</td>
