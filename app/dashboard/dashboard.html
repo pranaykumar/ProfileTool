@@ -1,26 +1,36 @@
 <div ng-controller="providersCntrl">
-	<div class="panel panel-body">
-		<div style="float: left;">
+	<div id="checkalldiv" class="panel panel-body">
+		<div id="checkboxdiv">
 			<input type="checkbox">
 		</div>
 		<div style="float: right;">
 			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
-				href="#" class="btn btn-default">IMPORT</a>
+				href="#/providers/{{selectedProvider}}/storageconfig"
+				class="btn btn-default">MANAGE STORAGE CONFIG</a> <a href="#"
+				class="btn btn-default">IMPORT</a>
 		</div>
 	</div>
-	<div class="panel panel-default">
+
+	<div class="panel panel-default" style="border-width: 0px;">
 		<ol class="breadcrumb">
-			<li class="active"><a href="#/providers">HOME</a></li>
-			<li class="active"><a href="#/providers/{{selectedProvider}}">{{selectedProvider}}:
-					PROCESSING PROFILES</a></li>
+			<li><a href="#/providers">HOME</a></li>
+			<li class="active">{{selectedProvider}}: PROCESSING PROFILES</li>
 		</ol>
 		<div id="profileDtlPnl" class="panel panel-default">
 			<!-- Form Name -->
 			<form class="form-inline" role="form">
 				<table class="table">
-					<tr ng-repeat="profile in profiles">
-						<td><input type="checkbox"></td>
-						<td>{{profile.name}}</td>
+					<tr ng-repeat="profile in profiles" table-Rowhover>
+						<td><label class="checkbox"> <input type="checkbox"></label>
+							<span popover="{{profile.name}}" popover-trigger="mouseenter"
+							popover-placement="right">{{profile.name}}</span></td>
+						<td class="MyClass1" profile-hover>
+							<div class="buttonbar">
+								<a href="#" class="btn btn-primary" ng-click="">MAKE DEFAULT</a>
+								<a href="#" class="btn btn-default" ng-click="">VIEW AND
+									EDIT</a> <a href="#" class="btn btn-default" ng-click="">REMOVE</a>
+							</div>
+						</td>
 					</tr>
 				</table>
 				<!-- 
@@ -46,16 +56,11 @@
 							</tr>
 						</table>						
 						 -->
-				<button type="submit" class="btn btn-primary" ng-click="">Edit
-					Profile</button>
-				<button type="submit" class="btn btn-primary" ng-click="">New
-					Profile</button>
-				<button type="submit" class="btn btn-primary" ng-click="">Set
-					Default Profile</button>
-				<button type="submit" class="btn btn-danger" ng-click="">Delete</button>
+
 			</form>
 		</div>
 
+		<!-- 
 		<div id="storagePnl" class="panel panel-default">
 			<div class="panel-body">
 
@@ -64,10 +69,8 @@
 					<form name="storageConfigForm" class="form-horizontal">
 						<fieldset>
 
-							<!-- Form Name -->
 							<legend>Storage Configuration</legend>
 
-							<!-- Text input-->
 							<div class="form-group">
 								<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
 								<div class="col-md-7">
@@ -88,7 +91,6 @@
 								</div>
 							</div>
 
-							<!-- URL input-->
 							<div class="form-group">
 								<label class="col-md-5 control-label" for="bucket">Bucket</label>
 								<div class="col-md-7">
@@ -98,7 +100,6 @@
 								</div>
 							</div>
 
-							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-5 control-label" for="accesskeyid">Access
 									Key ID</label>
@@ -110,7 +111,6 @@
 								</div>
 							</div>
 
-							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-5 control-label" for="key">Key</label>
 								<div class="col-md-7">
@@ -135,5 +135,6 @@
 				</div>
 			</div>
 		</div>
+ -->
 	</div>
 </div>

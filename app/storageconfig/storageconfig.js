@@ -11,9 +11,19 @@ angular.module('profileApp.storageconfig', [ 'ngRoute' ])
 	});
 } ])
 
-.controller('storageconfigCntrl', function($scope) {
+.controller('storageconfigCntrl', function($scope, $routeParams) {
 	$scope.storageTypeStub = storageTypeStub;
+	$scope.storageConfigStub = storageConfigStub;
+	$scope.selectedProvider = $routeParams.provider_id;
 });
+
+var storageConfigStub = {
+	name : 'Storage Config 1',
+	type : 'S3',
+	bucket : 'https://s3.amazonaws.com/bucket/object',
+	accessKeyId : 'test_id',
+	key : 'test_key'
+};
 
 var storageTypeStub = [ {
 	name : 'S3',

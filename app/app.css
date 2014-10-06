@@ -28,7 +28,7 @@
 	padding: 0;
 }
 
-html, body {
+html,body {
 	height: 100%;
 }
 
@@ -95,15 +95,7 @@ footer {
 }
 
 #profileDtlPnl {
-	float: left;
-	width: 40%;
-	margin-right: 2%;
 	border-width: 0px;
-}
-
-#storagePnl {
-	display: inline-block;
-	width: 58%;
 }
 
 .alert {
@@ -112,6 +104,10 @@ footer {
 
 .breadcrumb {
 	margin-bottom: 0px;
+	border: 1px solid #ddd;
+	border-radius: 0px;
+	border-bottom: 0px;
+	padding: 15px 10px;
 }
 
 table {
@@ -120,10 +116,18 @@ table {
 
 td {
 	font-family: 'Open Sans', sans-serif;
+	color: #1A1A1A;
 }
 
 th {
-	background-color: #ddd;
+	background-color: #E8EDF1;
+	color: #91A5AF;
+	font-weight: 400;
+	font-size: 15px;
+}
+
+.checkbox {
+	margin: 0px 10px;
 }
 
 #searchbox {
@@ -144,6 +148,18 @@ th {
 	padding-left: 0px;
 }
 
+#checkalldiv {
+	padding: 0px 0px 10px 10px;
+	margin-bottom: 0px;
+}
+
+#checkboxdiv {
+	float: left;
+	padding: 5px 30px 5px 10px;
+	background-color: #DEDFE2;
+	border-radius: 4px;
+}
+
 /* experimental */
 .MyClass {
 	opacity: 1;
@@ -159,4 +175,8 @@ th {
 
 .rowout {
 	background-color: #fff;
+}
+
+.buttonbar {
+	float: right;
 }

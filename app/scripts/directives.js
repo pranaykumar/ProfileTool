@@ -22,7 +22,7 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 			element.bind('mouseout', function() {
 				element.removeClass('MyClass');
 				element.addClass('MyClass1');
-			});	
+			});
 		}
 	}
 })
@@ -39,7 +39,7 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 			element.bind('mouseout', function() {
 				element.removeClass('rohover');
 				element.addClass('rowout');
-			});	
+			});
 		}
 	}
 });
