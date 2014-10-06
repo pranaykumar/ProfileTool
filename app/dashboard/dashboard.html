@@ -1,3 +1,23 @@
+
+<!-- 
+<script type="text/ng-template" id="popover">
+  <ul class="list-group" ng-repeat="profile in profiles">
+									<li class="list-group-item">Type - {{profile.type}}</li>
+									<li class="list-group-item">Private - {{profile.private}}</li>
+									<li class="list-group-item">Deinterlace Input -
+										{{profile.deinterlace_input}}</li>
+									<li class="list-group-item">Frame Rate -
+										{{profile.frame_rate}}</li>
+									<li class="list-group-item">Mezzanine Multipass Encoding -
+										{{profile.mezzanine_multipass_encoding}}</li>
+								</ul>
+</script>
+<button ns-popover ns-popover-template="popover"
+	ns-popover-trigger="mouseover" ns-popover-placement="right"
+	ns-popover-hide-on-click="true">Popover</button>
+ -->
+
+
 <div ng-controller="providersCntrl">
 	<div id="checkalldiv" class="panel panel-body">
 		<div id="checkboxdiv">
@@ -22,8 +42,9 @@
 				<table class="table">
 					<tr ng-repeat="profile in profiles" table-Rowhover>
 						<td><label class="checkbox"> <input type="checkbox"></label>
-							<span popover="{{profile.name}}" popover-trigger="mouseenter"
-							popover-placement="right">{{profile.name}}</span></td>
+							<span popover="Type: {{profile.type}}"
+							popover-title="Profile Configuration"
+							popover-trigger="mouseenter" popover-placement="right">{{profile.name}}</span></td>
 						<td class="MyClass1" profile-hover>
 							<div class="buttonbar">
 								<a href="#" class="btn btn-primary" ng-click="">MAKE DEFAULT</a>
