@@ -1,27 +1,29 @@
 
-<!-- 
-<script type="text/ng-template" id="popover">
-  <ul class="list-group" ng-repeat="profile in profiles">
-									<li class="list-group-item">Type - {{profile.type}}</li>
-									<li class="list-group-item">Private - {{profile.private}}</li>
-									<li class="list-group-item">Deinterlace Input -
-										{{profile.deinterlace_input}}</li>
-									<li class="list-group-item">Frame Rate -
-										{{profile.frame_rate}}</li>
-									<li class="list-group-item">Mezzanine Multipass Encoding -
-										{{profile.mezzanine_multipass_encoding}}</li>
-								</ul>
-</script>
-<button ns-popover ns-popover-template="popover"
-	ns-popover-trigger="mouseover" ns-popover-placement="right"
-	ns-popover-hide-on-click="true">Popover</button>
- -->
 
+<script type="text/ng-template" id="popover$index"
+	ng-repeat="profile in profiles">
+<div style="background-color: #fff; border:1px solid #ddd; padding:10px; box-shadow: 0 0 1em #7F8488;"><h4>Profile Configuration</h4>
+  <ul class="list-group">
+	<li class="list-group-item">Type: {{profile.type}}</li>
+	<li class="list-group-item">Private: {{profile.private | booleanFormatter}}</li>
+	<li class="list-group-item">Deinterlace Input: 
+		{{profile.deinterlace_input | booleanFormatter}}</li>
+	<li class="list-group-item">Frame Rate: {{profile.frame_rate}}</li>
+	<li class="list-group-item">Mezzanine Multipass Encoding: 
+		{{profile.mezzanine_multipass_encoding | booleanFormatter}}</li>
+</ul>
+</div>
+</script>
 
 <div ng-controller="providersCntrl">
 	<div id="checkalldiv" class="panel panel-body">
 		<div id="checkboxdiv">
-			<input type="checkbox">
+			<input type="checkbox" ng-click="checkAll()">
+		</div>
+		<div style="float: left; padding-left: 10px;">
+			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE DEFAULT</a> <a href="#"
+				class="btn btn-default" ng-show="singleCheck">VIEW AND EDIT</a> <a href="#"
+				class="btn btn-default">REMOVE</a>
 		</div>
 		<div style="float: right;">
 			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
@@ -41,12 +43,14 @@
 			<form class="form-inline" role="form">
 				<table class="table">
 					<tr ng-repeat="profile in profiles" table-Rowhover>
-						<td><label class="checkbox"> <input type="checkbox"></label>
-							<span popover="Type: {{profile.type}}"
-							popover-title="Profile Configuration"
-							popover-trigger="mouseenter" popover-placement="right">{{profile.name}}</span></td>
-						<td class="MyClass1" profile-hover>
-							<div class="buttonbar">
+						<td><label class="checkbox"> <input type="checkbox" ng-click="updateCheckFlag()" ng-checked="allChecked"
+								ng-disabled="{{profile.type==='default_video'}}"></label> <span
+							ns-popover ns-popover-template="popover$index"
+							ns-popover-trigger="mouseover" ns-popover-placement="right"
+							ns-popover-hide-on-click="true" ns-popover-timeout="0">{{profile.name}}</span>
+						</td>
+						<td>
+							<div class="buttonbar hideonhover">
 								<a href="#" class="btn btn-primary" ng-click="">MAKE DEFAULT</a>
 								<a href="#" class="btn btn-default" ng-click="">VIEW AND
 									EDIT</a> <a href="#" class="btn btn-default" ng-click="">REMOVE</a>
@@ -54,108 +58,9 @@
 						</td>
 					</tr>
 				</table>
-				<!-- 
-						 <table class="table">
-							<tr>
-								<accordion close-others="oneAtATime"> <accordion-group
-									heading="{{profile.name}}" ng-repeat="profile in profiles">
-								<ul class="list-group">
-									<li class="list-group-item">Type - {{profile.type}}</li>
-									<li class="list-group-item">Private - {{profile.private}}</li>
-									<li class="list-group-item">Deinterlace Input -
-										{{profile.deinterlace_input}}</li>
-									<li class="list-group-item">Frame Rate -
-										{{profile.frame_rate}}</li>
-									<li class="list-group-item">Mezzanine Multipass Encoding -
-										{{profile.mezzanine_multipass_encoding}}</li>
-								</ul>
-
-								</accordion-group> <accordion-group is-open="status.open"> <accordion-heading>
-								<span>Test Profile</span> <i class="pull-right glyphicon"
-									ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-								</accordion-heading> Test Profile Details </accordion-group> </accordion>
-							</tr>
-						</table>						
-						 -->
-
 			</form>
 		</div>
-
-		<!-- 
-		<div id="storagePnl" class="panel panel-default">
-			<div class="panel-body">
-
-				<div class="storageDiv">
-
-					<form name="storageConfigForm" class="form-horizontal">
-						<fieldset>
-
-							<legend>Storage Configuration</legend>
-
-							<div class="form-group">
-								<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
-								<div class="col-md-7">
-									<input id="name" name="name" type="text" placeholder="Name"
-										class="form-control input-md"
-										value="{{storageConfigStub.name}}" required>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="type">Type</label>
-								<div class="col-md-7">
-									<select id="type" name="type" class="form-control">
-										<option ng-repeat="storageType in storageTypeStub"
-											value="storageType.id">{{storageType.name}}</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="bucket">Bucket</label>
-								<div class="col-md-7">
-									<input id="bucket" name="bucket" type="url"
-										placeholder="bucket" class="form-control input-md"
-										value="{{storageConfigStub.bucket}}" required>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="accesskeyid">Access
-									Key ID</label>
-								<div class="col-md-7">
-									<input id="accesskeyid" name="accesskeyid" type="text"
-										placeholder="Access Key ID" class="form-control input-md"
-										value="{{storageConfigStub.accessKeyId}}" required>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="key">Key</label>
-								<div class="col-md-7">
-									<input id="key" name="key" type="text" placeholder="Key"
-										class="form-control input-md"
-										value="{{storageConfigStub.key}}" required>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<div style="margin-left: 164px;">
-									<button type="submit" class="btn btn-primary" ng-click="clk()"
-										ng-disabled="!storageConfigForm.$valid">Save</button>
-									<a href="#/providers/{{selectedProvider}}/storageconfig"
-										class="btn btn-primary">New</a>
-								</div>
-							</div>
-
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
- -->
 	</div>
 </div>
+
+

@@ -15,13 +15,19 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 		restrict : 'A',
 		link : function(scope, element) {
 			element.bind('mouseover', function() {
-				element.removeClass('MyClass1');
-				element.addClass('MyClass');
+				element.find('a').removeClass('hideonhover');
+				element.find('a').addClass('showonhover');
+				
+				element.find('span').removeClass('showonhover');
+				element.find('span').addClass('hideonhover');
 			});
 
 			element.bind('mouseout', function() {
-				element.removeClass('MyClass');
-				element.addClass('MyClass1');
+				element.find('a').removeClass('showonhover');
+				element.find('a').addClass('hideonhover');
+				
+				element.find('span').removeClass('hideonhover');
+				element.find('span').addClass('showonhover');
 			});
 		}
 	}
@@ -34,11 +40,17 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 			element.bind('mouseover', function() {
 				element.removeClass('rowout');
 				element.addClass('rowhover');
+				
+				element.find('div').removeClass('hideonhover');
+				element.find('div').addClass('showonhover');
 			});
 
 			element.bind('mouseout', function() {
 				element.removeClass('rohover');
 				element.addClass('rowout');
+				
+				element.find('div').removeClass('showonhover');
+				element.find('div').addClass('hideonhover');
 			});
 		}
 	}

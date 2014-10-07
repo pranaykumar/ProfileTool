@@ -14,7 +14,7 @@ angular
 
 		.controller(
 				'providerSearchController',
-				function($scope, $http, ProfileService) {
+				function($scope, $http) {
 					$scope.providerSrchStr = '';
 					$scope.providerSelected = false;
 

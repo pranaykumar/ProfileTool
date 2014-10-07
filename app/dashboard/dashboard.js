@@ -18,13 +18,26 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 			$scope.storageConfigStub = storageConfigStub;
 			$scope.storageTypeStub = storageTypeStub;
 			$scope.selectedProvider = $routeParams.provider_id;
-
+			var singleCheck = false;
+			$scope.singleCheck = singleCheck;
+			var allChecked = false;
+			$scope.allChecked = allChecked;
+			
 			// Call the service and wait for it to finish and then
 			// populate the Profiles variable in scope using a callback
 			ProfileService.getProfiles($routeParams.provider_id).then(
 					function(data) {
 						$scope.profiles = data;
 					});
+			
+			$scope.updateCheckFlag = function() {
+				$scope.singleCheck = !$scope.singleCheck
+			};
+			
+			$scope.checkAll = function() {
+				$scope.allChecked = !$scope.allChecked;
+				$scope.singleCheck = false;
+			}
 
 		})
 
@@ -55,4 +68,14 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 							});
 				}
 			};
-		});
+		})
+
+.filter('booleanFormatter', function() {
+	var myBooleanFilter = function(input) {
+		if (input == 1)
+			return "True";
+		else
+			return "False";
+	};
+	return myBooleanFilter;
+});

@@ -24,14 +24,14 @@
 				<th>EMAIL</th>
 				<th>PROCESSING PROFILES</th>
 			</tr>
-			<tr ng-repeat="provider in providers" class="rowout" table-Rowhover>
+			<tr ng-repeat="provider in providers" class="rowout" table-Rowhover
+				profile-hover>
 				<td>{{provider.name}}</td>
 				<td>{{provider.provider_id}}</td>
 				<td>{{provider.email}}</td>
-				<td>
-					<span>{{provider.profile_count}}</span>
-					<a class="btn btn-primary MyClass1" href="#/providers/{{provider.provider_id}}" profile-hover>MANAGE PROFILES</a>
-				</td>
+				<td><span class="showonhover">{{provider.profile_count}}</span>
+					<a class="btn btn-primary hideonhover"
+					href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a></td>
 
 			</tr>
 		</table>

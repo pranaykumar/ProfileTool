@@ -73,7 +73,7 @@ footer {
 	clear: both;
 	height: 30px;
 	line-height: 30px;
-	padding: 0 15px;
+	padding: 0 35px;
 	margin-top: -30px;
 	background-color: #A7B0B8;
 	color: white;
@@ -161,11 +161,11 @@ th {
 }
 
 /* experimental */
-.MyClass {
+.showonhover {
 	opacity: 1;
 }
 
-.MyClass1 {
+.hideonhover {
 	opacity: 0;
 }
 
