@@ -180,3 +180,7 @@ th {
 .buttonbar {
 	float: right;
 }
+
+.noborder{
+	border: 0px;
+}

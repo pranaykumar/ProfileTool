@@ -73,9 +73,9 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 .filter('booleanFormatter', function() {
 	var myBooleanFilter = function(input) {
 		if (input == 1)
-			return "True";
+			return "Active";
 		else
-			return "False";
+			return "Inactive";
 	};
 	return myBooleanFilter;
 });
