@@ -21,15 +21,13 @@ angular.module('profileApp.view_profile', [ 'ngRoute' ])
 // stubbed data for streams. This will be pulled from the REST api in production
 
 var profile = {
-	"Play_Ready_Encryption" : "Off",
-	"Add_Audio_Only_to_WVM" : "Off",
-	"Flash_Access" : "Off",
-	"Custom_Image_Width" : "96px",
-	"Zencoder" : "On",
-	"Duplicate_Check" : "On",
-	"Flv_Post_Bit_Rate_Threshold" : 3000,
-	"Encrypt_iOS_ABR" : "Off",
-	"Bypass_Chunking" : "Off"
+	"image_interval_sec" : "100s",
+	"custom_image_widths" : "96, 100, 180",
+	"watermarks" : "Default",
+	"position" : "Bottom",
+	"deinterlace_input" : "Active",
+	"override_source": "Inactive",
+	"multipass_encoding" : "Inactive"
 };
 
 var streams = [ {

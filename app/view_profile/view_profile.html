@@ -4,18 +4,20 @@
 	<li class="active">{{selectedProfile}}</li>
 </ol>
 <div class="noborder panel panel-default">
-<h3>View Profile</h3>
+	<h3>View Profile</h3>
 
-<a href="#/providers/{{selectedProvider}}" class="btn btn-default" ng-click=""
-	ng-hide="{{profile.type==='default_video'}}">CANCEL</a>
-<a href="#" class="btn btn-primary" ng-click=""
-	ng-hide="{{profile.type==='default_video'}}">EDIT</a>
-<h3>Profile 2 to the provider</h3>
+	<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+		ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+		href="#" class="btn btn-primary" ng-click=""
+		ng-hide="{{profile.type==='default_video'}}">EDIT</a>
+	<h3>Profile 2 to the provider</h3>
 </div>
 <div class="noborder panel panel-default">
-	<table class="noborder table table-default" style="width: 55%; border: 0px;">
+	<table class="noborder table table-default"
+		style="width: 55%; border: 0px;">
 		<tr ng-repeat="stream in streams">
-			<td><span class="propertyLabel">Stream {{stream.stream_id}}:</span></td>
+			<td><span class="propertyLabel">Stream
+					{{stream.stream_id}}:</span></td>
 			<td><div>
 					<span class="propertyLabel">Encode Width: </span>{{stream.encode_width}}
 				</div>
@@ -38,33 +40,28 @@
 	</table>
 </div>
 <div class="noborder panel panel-default">
-	<table class="noborder table table-default" style="width: 50%; border: 0px;">
+	<table class="noborder table table-default"
+		style="width: 50%; border: 0px;">
 		<tr>
-			<td><span class="propertyLabel">Play Ready Encryption: </span>{{profile.Play_Ready_Encryption}}</td>
-			<td><span class="propertyLabel">Add Audio Only to WVM: </span>{{profile.Add_Audio_Only_to_WVM}}</td>
+			<td><span class="propertyLabel">Image interval sec: </span>{{profile.image_interval_sec}}</td>
+			<td><span class="propertyLabel">Custom image widths: </span>{{profile.custom_image_widths}}</td>
 		</tr>
 		<tr>
-			<td><span class="propertyLabel">Flash Access: </span>{{profile.Flash_Access}}</td>
-			<td><span class="propertyLabel">Custom Image Width: </span>{{profile.Custom_Image_Width}}</td>
+			<td><span class="propertyLabel">Watermarks: </span>{{profile.watermarks}}
+				<span class="propertyLabel">Position: </span>{{profile.position}}</td>
+			<td><span class="propertyLabel">Deinterlace input: </span>{{profile.deinterlace_input}}</td>
+
 		</tr>
 		<tr>
-			<td><span class="propertyLabel">Zencoder: </span>{{profile.Zencoder}}</td>
-			<td><span class="propertyLabel">Duplicate Check: </span>{{profile.Duplicate_Check}}</td>
-		</tr>
-		<tr>
-			<td><span class="propertyLabel">Flv Post Bit Rate
-					Threshold: </span>{{profile.Flv_Post_Bit_Rate_Threshold}}</td>
-			<td><span class="propertyLabel">Encrypt iOS ABR: </span>{{profile.Encrypt_iOS_ABR}}</td>
-		</tr>
-		<tr>
-			<td><span class="propertyLabel">Bypass Chunking: </span>{{profile.Bypass_Chunking}}</td>
+			<td><span class="propertyLabel">Override source: </span>{{profile.override_source}}</td>
+			<td><span class="propertyLabel">Multipass encoding: </span>{{profile.multipass_encoding}}</td>
 		</tr>
 	</table>
 </div>
 
 <div class="noborder panel panel-default">
-<a href="#/providers/{{selectedProvider}}" class="btn btn-default" ng-click=""
-	ng-hide="{{profile.type==='default_video'}}">CANCEL</a>
-<a href="#" class="btn btn-primary" ng-click=""
-	ng-hide="{{profile.type==='default_video'}}">EDIT</a>
+	<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+		ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+		href="#" class="btn btn-primary" ng-click=""
+		ng-hide="{{profile.type==='default_video'}}">EDIT</a>
 </div>
