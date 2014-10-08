@@ -22,16 +22,17 @@
 				<th>NAME</th>
 				<th>ID</th>
 				<th>EMAIL</th>
-				<th>PROCESSING PROFILES</th>
+				<th style="text-align: center;">PROFILES</th>
 			</tr>
 			<tr ng-repeat="provider in providers" class="rowout" table-Rowhover
-				profile-hover>
-				<td>{{provider.name}}</td>
-				<td>{{provider.provider_id}}</td>
-				<td>{{provider.email}}</td>
-				<td><span class="showonhover">{{provider.profile_count}}</span>
-					<a class="btn btn-primary hideonhover"
-					href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a></td>
+				provider-Rowhover>
+				<td class="verticalmid">{{provider.name}}</td>
+				<td class="verticalmid">{{provider.provider_id}}</td>
+				<td class="verticalmid">{{provider.email}}</td>
+				<td style="text-align: center;">
+				<div style="height: 35px;"><div class="showonhover"><span>{{provider.profile_count}}</div>
+					<div class="hideonhover"><a class="btn btn-primary"
+					href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a></div></div></td>
 
 			</tr>
 		</table>

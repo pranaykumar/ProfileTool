@@ -10,28 +10,46 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 	};
 })
 
-.directive('profileHover', function($compile) {
+.directive('profileRowhover', function($compile) {
 	return {
 		restrict : 'A',
 		link : function(scope, element) {
 			element.bind('mouseover', function() {
-				element.find('a').removeClass('hideonhover');
-				element.find('a').addClass('showonhover');
-				
-				element.find('span').removeClass('showonhover');
-				element.find('span').addClass('hideonhover');
+				element.find('a').parent().removeClass('hideonhover');
+				element.find('a').parent().addClass('showonhover');
 			});
 
 			element.bind('mouseout', function() {
-				element.find('a').removeClass('showonhover');
-				element.find('a').addClass('hideonhover');
-				
-				element.find('span').removeClass('hideonhover');
-				element.find('span').addClass('showonhover');
+				element.find('a').parent().removeClass('showonhover');
+				element.find('a').parent().addClass('hideonhover');
 			});
 		}
 	}
 })
+
+.directive('providerRowhover', function($compile) {
+	return {
+		restrict : 'A',
+		link : function(scope, element) {
+			element.bind('mouseover', function() {
+				element.find('a').parent().removeClass('hideonhover');
+				element.find('a').parent().addClass('showonhover');
+				
+				element.find('span').parent().removeClass('showonhover');
+				element.find('span').parent().addClass('hideonhover');
+			});
+
+			element.bind('mouseout', function() {
+				element.find('a').parent().removeClass('showonhover');
+				element.find('a').parent().addClass('hideonhover');
+				
+				element.find('span').parent().removeClass('hideonhover');
+				element.find('span').parent().addClass('showonhover');
+			});
+		}
+	}
+})
+
 
 .directive('tableRowhover', function($compile) {
 	return {
@@ -39,18 +57,12 @@ angular.module('profileApp.directives', [ 'ngRoute' ])
 		link : function(scope, element) {
 			element.bind('mouseover', function() {
 				element.removeClass('rowout');
-				element.addClass('rowhover');
-				
-				element.find('div').removeClass('hideonhover');
-				element.find('div').addClass('showonhover');
+				element.addClass('rowhover');				
 			});
 
 			element.bind('mouseout', function() {
 				element.removeClass('rohover');
 				element.addClass('rowout');
-				
-				element.find('div').removeClass('showonhover');
-				element.find('div').addClass('hideonhover');
 			});
 		}
 	}

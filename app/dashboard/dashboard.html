@@ -1,18 +1,24 @@
 
 <script type="text/ng-template" id="popover$index"
 	ng-repeat="profile in profiles">
-<div style="background-color: #fff; border:1px solid #ddd; padding:10px; box-shadow: 0 0 1em #7F8488;"><h4>Profile Configuration</h4>
+<div style="background-color: #fff; border:1px solid #ddd; padding:10px; box-shadow: 0 0 1em #7F8488;"><h3>Profile Configuration</h3>
   <table class="table noborder">
-	<tr><td style="border: 0px;">Type: </td><td style="border: 0px;">{{profile.type}}</td></tr>
-	<tr><td style="border: 0px;">Private: </td><td style="border: 0px;">{{profile.private | booleanFormatter}}</td></tr>
-	<tr><td style="border: 0px;">Deinterlace Input: </td><td style="border: 0px;">{{profile.deinterlace_input | booleanFormatter}}</td></tr>
-	<tr><td style="border: 0px;">Frame Rate: </td><td style="border: 0px;">{{profile.frame_rate}}</td></tr>
-	<tr><td style="border: 0px;">Multipass Encoding: </td><td style="border: 0px;">{{profile.mezzanine_multipass_encoding | booleanFormatter}}</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Image interval sec: </span></td><td style="border: 0px;">100s</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Custom image widths: </span></td><td style="border: 0px;">96, 100, 180</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Streams: </span></td><td style="border: 0px;"><span ng-repeat="stream in profile.streams"><span ng:hide='$index==0'>, </span>{{stream.name}}</span</td></tr>
+	<tr><td style="border: 0px;"><table class="noborder"><tr><td><span class="propertyLabel">Watermarks: </span>Default</td><td style="padding: 0px 10px;"><span class="propertyLabel">Position: </span>Bottom</td></tr></table></td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Deinterlace Input: </span></td><td style="border: 0px;">{{profile.deinterlace_input | booleanFormatter}}</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Frame Rate: </span></td><td style="border: 0px;">{{profile.frame_rate}}</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Multipass Encoding: </span></td><td style="border: 0px;">{{profile.mezzanine_multipass_encoding | booleanFormatter}}</td></tr>
 </table>
 </div>
 </script>
 
 <div ng-controller="providersCntrl">
+	<ol class="breadcrumb">
+		<li><a href="#/providers">HOME</a></li>
+		<li class="active">{{selectedProvider}}: PROCESSING PROFILES</li>
+	</ol>
 	<div id="checkalldiv" class="panel panel-body">
 		<div id="checkboxdiv">
 			<input type="checkbox" ng-click="checkAll()">
@@ -24,41 +30,43 @@
 		</div>
 		<div style="float: right;">
 			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
+				href="#" class="btn btn-default">IMPORT</a> <a
 				href="#/providers/{{selectedProvider}}/storageconfig"
-				class="btn btn-default">MANAGE STORAGE CONFIG</a> <a href="#"
-				class="btn btn-default">IMPORT</a>
+				class="btn btn-default">MANAGE STORAGE LOCATION</a>
 		</div>
 	</div>
 
-	<div class="panel panel-default" style="border-width: 0px;">
-		<ol class="breadcrumb">
-			<li><a href="#/providers">HOME</a></li>
-			<li class="active">{{selectedProvider}}: PROCESSING PROFILES</li>
-		</ol>
-		<div id="profileDtlPnl" class="panel panel-default">
-			<!-- Form Name -->
-			<form class="form-inline" role="form">
-				<table class="table">
-					<tr ng-repeat="profile in profiles" table-Rowhover>
-						<td><label class="checkbox"> <input type="checkbox"
-								ng-click="updateCheckFlag()" ng-checked="allChecked"
-								ng-disabled="{{profile.type==='default_video'}}"></label> <span
-							ns-popover ns-popover-template="popover$index"
-							ns-popover-trigger="mouseover" ns-popover-placement="right"
-							ns-popover-hide-on-click="true" ns-popover-timeout="0">{{profile.name}}</span>
-							<span ng-show="{{profile.type==='default_video'}}"
-							style="font-style: italic;">(Default)</span></td>
-						<td>
-							<div class="buttonbar hideonhover">
-								<a href="#" class="btn btn-primary" ng-click="" ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a>
-								<a href="#" class="btn btn-default" ng-click="">VIEW AND
-									EDIT</a> <a href="#" class="btn btn-default" ng-click="">REMOVE</a>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+	<div id="profileDtlPnl" class="panel panel-default">
+		<div id="profDtlHdr" class="panel-heading">PROCESSING PROFILES</div>
+		<!-- Form Name -->
+		<form class="form-inline" role="form">
+			<table class="table">
+				<tr ng-repeat="profile in profiles" table-Rowhover profile-Rowhover>
+					<td class="verticalmid"><img id="lockicon" alt="locked profile"
+						src="images/lockicon.png"
+						ng-show="allChecked && (profile.type==='default_video')"><label
+						class="checkbox"
+						ng-hide="allChecked && (profile.type==='default_video')">
+							<input type="checkbox" ng-click="updateCheckFlag(profile.type)"
+							ng-checked="allChecked" ng-disabled="profile.type==='default_video'">
+					</label> <span ns-popover ns-popover-template="popover$index"
+						ns-popover-trigger="mouseover" ns-popover-placement="right"
+						ns-popover-hide-on-click="true" ns-popover-timeout="0">{{profile.name}}</span>
+						<span ng-show="{{profile.type==='default_video'}}"
+						style="font-style: italic;">(Default)</span></td>
+					<td>
+						<div class="buttonbar hideonhover">
+							<a href="#" class="btn btn-primary" ng-click=""
+								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
+								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
+								class="btn btn-default" ng-click="">VIEW</a> <a href="#"
+								class="btn btn-default" ng-click="">EDIT</a> <a href="#"
+								class="btn btn-default" ng-click="">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 

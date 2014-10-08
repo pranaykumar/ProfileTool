@@ -98,16 +98,26 @@ footer {
 	border-width: 0px;
 }
 
+#profDtlHdr {
+	color: #91A5AF;
+	padding-left: 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 0px;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+
 .alert {
 	margin-top: 10px;
 }
 
 .breadcrumb {
 	margin-bottom: 0px;
-	border: 1px solid #ddd;
+	border: 0px;
 	border-radius: 0px;
 	border-bottom: 0px;
-	padding: 15px 10px;
+	padding: 0px 0px 15px 0px;
+	background-color: #fff;
 }
 
 table {
@@ -149,24 +159,24 @@ th {
 }
 
 #checkalldiv {
-	padding: 0px 0px 10px 10px;
+	padding: 0px 0px 10px 0px;
 	margin-bottom: 0px;
 }
 
 #checkboxdiv {
 	float: left;
-	padding: 5px 30px 5px 10px;
+	padding: 5px 10px 5px 10px;
 	background-color: #DEDFE2;
 	border-radius: 4px;
 }
 
-/* experimental */
 .showonhover {
 	opacity: 1;
 }
 
 .hideonhover {
 	opacity: 0;
+	height: 0px;
 }
 
 .rowhover {
@@ -179,8 +189,26 @@ th {
 
 .buttonbar {
 	float: right;
+	height: 35px;
 }
 
-.noborder{
+.noborder {
 	border: 0px;
+	box-shadow: none;
+}
+
+table.noborder tbody tr td {
+	border: 0px;
+}
+
+.propertyLabel {
+	font-weight: bold;
+}
+
+table tbody tr td.verticalmid{
+	vertical-align: middle;
+}
+
+#lockicon{
+	padding: 0px 9px 5px 9px;
 }
