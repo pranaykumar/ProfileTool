@@ -5,8 +5,8 @@
   <table class="table noborder">
 	<tr><td style="border: 0px;"><span class="propertyLabel">Image interval sec: </span></td><td style="border: 0px;">100s</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Custom image widths: </span></td><td style="border: 0px;">96, 100, 180</td></tr>
-	<tr><td style="border: 0px;"><span class="propertyLabel">Streams: </span></td><td style="border: 0px;"><span ng-repeat="stream in profile.streams"><span ng:hide='$index==0'>, </span>{{stream.name}}</span</td></tr>
-	<tr><td style="border: 0px;"><table class="noborder"><tr><td><span class="propertyLabel">Watermarks: </span>Default</td><td style="padding: 0px 10px;"><span class="propertyLabel">Position: </span>Bottom</td></tr></table></td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Streams: </span></td><td style="border: 0px; width: 175px;"><span ng-repeat="stream in profile.streams"><span ng:hide='$index==0'>, </span>{{stream.name}}</span</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Watermarks: </span>Default</td><td style="border: 0px;"><span class="propertyLabel">Position: </span>Bottom</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Deinterlace Input: </span></td><td style="border: 0px;">{{profile.deinterlace_input | booleanFormatter}}</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Frame Rate: </span></td><td style="border: 0px;">{{profile.frame_rate}}</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Multipass Encoding: </span></td><td style="border: 0px;">{{profile.mezzanine_multipass_encoding | booleanFormatter}}</td></tr>
@@ -24,9 +24,9 @@
 			<input type="checkbox" ng-click="checkAll()">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE
-				DEFAULT</a> <a href="#" class="btn btn-default" ng-show="singleCheck">VIEW
-				AND EDIT</a> <a href="#" class="btn btn-default">REMOVE</a>
+			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE DEFAULT</a> 
+			<a href="#"	class="btn btn-default" ng-show="singleCheck">EDIT</a>
+			<a href="#"	class="btn btn-default" ng-show="allChecked || singleCheck">REMOVE</a>
 		</div>
 		<div style="float: right;">
 			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
@@ -42,13 +42,14 @@
 		<form class="form-inline" role="form">
 			<table class="table">
 				<tr ng-repeat="profile in profiles" table-Rowhover profile-Rowhover>
-					<td class="verticalmid"><img id="lockicon" alt="locked profile"
-						src="images/lockicon.png"
+					<td class="verticalmid"><img id="lockicon"
+						alt="locked profile" src="images/lockicon.png"
 						ng-show="allChecked && (profile.type==='default_video')"><label
 						class="checkbox"
 						ng-hide="allChecked && (profile.type==='default_video')">
 							<input type="checkbox" ng-click="updateCheckFlag(profile.type)"
-							ng-checked="allChecked" ng-disabled="profile.type==='default_video'">
+							ng-checked="allChecked"
+							ng-disabled="profile.type==='default_video'">
 					</label> <span ns-popover ns-popover-template="popover$index"
 						ns-popover-trigger="mouseover" ns-popover-placement="right"
 						ns-popover-hide-on-click="true" ns-popover-timeout="0">{{profile.name}}</span>
