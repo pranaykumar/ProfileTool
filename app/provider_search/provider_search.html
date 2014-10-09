@@ -30,7 +30,7 @@
 				<td class="verticalmid">{{provider.provider_id}}</td>
 				<td class="verticalmid">{{provider.email}}</td>
 				<td style="text-align: center;">
-				<div style="height: 35px;"><div class="showonhover"><span>{{provider.profile_count}}</div>
+				<div style="height: 35px;"><div class="showonhover"><span>{{provider.profile_count | nullNumberFormatter}}</div>
 					<div class="hideonhover"><a class="btn btn-primary"
 					href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a></div></div></td>
 

@@ -39,4 +39,14 @@ angular
 										});
 					};
 
-				});
+				})
+
+		.filter('nullNumberFormatter', function() {
+			var myNullNumberFormatter = function(input) {
+				if (input === null)
+					return 0;
+				else
+					return input;
+			};
+			return myNullNumberFormatter;
+		});
