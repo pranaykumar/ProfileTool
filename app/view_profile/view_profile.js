@@ -70,7 +70,7 @@ var streams = [ {
 	"video_encryption_level" : null
 },
 {
-	"stream_id" : "2",
+	"stream_id" : "3",
 	"name" : "HTTP Live Streaming audio + video",
 	"stream_type" : "single",
 	"encode_width" : 576,
@@ -78,7 +78,7 @@ var streams = [ {
 	"muxing_format" : "ts",
 	"profile" : "baseline",
 	"audio_sample_rate" : 44100,
-	"audio_bitrate" : 128,
+	"audio_bitrate" : 64,
 	"video_bitrate" : 800,
 	"video_width" : 640,
 	"keyframe_interval_sec" : 5,
@@ -90,7 +90,7 @@ var streams = [ {
 	"video_encryption_level" : null
 },
 {
-	"stream_id" : "2",
+	"stream_id" : "4",
 	"name" : "HTTP Live Streaming audio + video",
 	"stream_type" : "single",
 	"encode_width" : 576,

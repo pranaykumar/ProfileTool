@@ -14,31 +14,20 @@
 </div>
 <div class="noborder panel panel-default">
 	<table class="noborder table table-default"
-		style="width: 55%; border: 0px;">
+		style="width: 50%; border: 0px;">
 		<tr ng-repeat="stream in streams">
-			<td><span class="propertyLabel">Stream
-					{{stream.stream_id}}:</span></td>
-			<td><div>
-					<span class="propertyLabel">Encode Width: </span>{{stream.encode_width}}
-				</div>
-				<div>
-					<span class="propertyLabel">Audio Bit Rate: </span>{{stream.audio_bitrate}}
+			<td><p class="propertyLabel">Stream {{stream.stream_id}}:</p>
+				<div class="input-group">
+					<input type="text" class="form-control"
+						value="Encode Width:{{stream.encode_width}}; Audio Bit Rate: {{stream.audio_bitrate}}; h266 profile: {{stream.h266_profile}}; Stream Type: {{stream.stream_type}}; Video Bit Rate: {{stream.video_bitrate}}; Audio Sample Rate: {{stream.audio_sample_rate}} ">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">COPY</button>
+					</span>
 				</div></td>
-			<td><div>
-					<span class="propertyLabel">h266 profile: </span>{{stream.h266_profile}}
-				</div>
-				<div>
-					<span class="propertyLabel">Stream Type: </span>{{stream.stream_type}}
-				</div></td>
-			<td><div>
-					<span class="propertyLabel">Video Bit Rate: </span>{{stream.video_bitrate}}
-				</div>
-				<div>
-					<span class="propertyLabel">Audio Sample Rate: </span>{{stream.audio_sample_rate}}
-				</div></td>
-		</tr>
+		<tr>
 	</table>
 </div>
+
 <div class="noborder panel panel-default">
 	<table class="noborder table table-default"
 		style="width: 50%; border: 0px;">
@@ -58,6 +47,7 @@
 		</tr>
 	</table>
 </div>
+
 
 <div class="noborder panel panel-default">
 	<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
