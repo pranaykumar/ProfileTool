@@ -1,0 +1,88 @@
+
+
+<div ng-controller="editProfileController">
+	<ol class="breadcrumb">
+		<li><a href="#/providers">HOME</a></li>
+		<li><a href="#/providers/{{selectedProvider}}">{{selectedProvider}}</a></li>
+		<li class="active">{{selectedProfile}}</li>
+	</ol>
+	<div class="noborder panel panel-default">
+		<h3>Edit Profile</h3>
+		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+			href="#" class="btn btn-primary" ng-click=""
+			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
+		<h3>Profile 2 to the provider</h3>
+		<table class="noborder table table-default"
+			style="width: 40%; border: 0px;">
+			<tr>
+				<td><span class="propertyLabel">Image interval sec</span></td>
+				<td><div class="col-lg-12">
+						<input id="name" name="name" type="text" placeholder="Name"
+							class="form-control input-md"
+							value="{{profile.image_interval_sec}}" required>
+					</div></td>
+			</tr>
+			<tr>
+				<td><span class="propertyLabel">Custom image widths</span></td>
+				<td><div class="col-lg-12">
+						<input id="name" name="name" type="text" placeholder="Name"
+							class="form-control input-md"
+							value="{{profile.custom_image_widths}}" required>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="propertyLabel">Streams</span></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<table class="noborder">
+						<tr>
+							<td><select id="type" name="type" class="form-control">
+									<option ng-repeat="stream in streams">{{stream.stream_id}}
+										- {{stream.name}} - {{stream.stream_type}}</option>
+							</select></td>
+							<td style="padding-left: 4px;"><a href="#"
+								class="btn btn-default" ng-click="">NEW</a> <a href="#"
+								class="btn btn-default" ng-click="">EDIT</a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="propertyLabel">Watermarks</span></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea rows="3" cols="63"
+						style="resize: none;"></textarea>
+				<td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<div style="float: left;padding-top: 2px;"><span class="propertyLabel">Position</span></div>
+					<div class="radiogroup">
+						<input type="radio" name="mygroup" id="bottom" value="bottom">
+						<label for="bottom">Bottom</label>
+					</div>
+					<div class="radiogroup">
+						<input type="radio" name="mygroup" id="top" value="top">
+						<label for="yes">Top</label>
+					</div>
+					<div class="radiogroup">
+						<input type="radio" name="mygroup" id="left" value="left">
+						<label for="no">Left</label>
+					</div>
+					<div class="radiogroup">
+						<input type="radio" name="mygroup" id="right" value="right">
+						<label for="yes">Right</label>
+					</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="noborder panel panel-default">
+		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+			href="#" class="btn btn-primary" ng-click=""
+			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
+	</div>
+</div>

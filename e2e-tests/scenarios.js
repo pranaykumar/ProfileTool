@@ -30,20 +30,20 @@ describe(
 						
 						it('should display error message when no matching provider is found for a search string',
 								function() {
-									element(by.model('providerSrchStr')).sendKeys('dummy\n');
+									element(by.model('providerSrchStr')).sendKeys('aaa\n');
 									expect(element(by.className('alert')).isDisplayed()).toBeTruthy();
 								});
 						
 						it('should display multiple records when more than one provider is found for a search string',
 								function() {
-									element(by.model('providerSrchStr')).sendKeys('STAR\n');
+									element(by.model('providerSrchStr')).sendKeys('ESPN\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
 									expect(providerElems.count()).toBeGreaterThan(1);
 								});
 						
 						it('should display one records when exactly one provider is found for a search string',
 								function() {
-									element(by.model('providerSrchStr')).sendKeys('STARSPORTS\n');
+									element(by.model('providerSrchStr')).sendKeys('sky ESPN\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
 									expect(providerElems.count()).toBe(1);
 								});

@@ -1,57 +1,60 @@
-<ol class="breadcrumb">
-	<li><a href="#/providers">HOME</a></li>
-	<li><a href="#/providers/{{selectedProvider}}">{{selectedProvider}}</a></li>
-	<li class="active">{{selectedProfile}}</li>
-</ol>
-<div class="noborder panel panel-default">
-	<h3>View Profile</h3>
+<div ng-controller="viewProfileController">
 
-	<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
-		ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
-		href="#" class="btn btn-primary" ng-click=""
-		ng-hide="{{profile.type==='default_video'}}">EDIT</a>
-	<h3>Profile 2 to the provider</h3>
-</div>
-<div class="noborder panel panel-default">
-	<table class="noborder table table-default"
-		style="width: 50%; border: 0px;">
-		<tr ng-repeat="stream in streams">
-			<td><p class="propertyLabel">Stream {{stream.stream_id}}:</p>
-				<div class="input-group">
-					<input type="text" class="form-control"
-						value="Encode Width:{{stream.encode_width}}; Audio Bit Rate: {{stream.audio_bitrate}}; h266 profile: {{stream.h266_profile}}; Stream Type: {{stream.stream_type}}; Video Bit Rate: {{stream.video_bitrate}}; Audio Sample Rate: {{stream.audio_sample_rate}} ">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">COPY</button>
-					</span>
-				</div></td>
-		<tr>
-	</table>
-</div>
+	<ol class="breadcrumb">
+		<li><a href="#/providers">HOME</a></li>
+		<li><a href="#/providers/{{selectedProvider}}">{{selectedProvider}}</a></li>
+		<li class="active">{{selectedProfile}}</li>
+	</ol>
+	<div class="noborder panel panel-default">
+		<h3>View Profile</h3>
 
-<div class="noborder panel panel-default">
-	<table class="noborder table table-default"
-		style="width: 50%; border: 0px;">
-		<tr>
-			<td><span class="propertyLabel">Image interval sec: </span>{{profile.image_interval_sec}}</td>
-			<td><span class="propertyLabel">Custom image widths: </span>{{profile.custom_image_widths}}</td>
-		</tr>
-		<tr>
-			<td><span class="propertyLabel">Watermarks: </span>{{profile.watermarks}}
-				<span class="propertyLabel">Position: </span>{{profile.position}}</td>
-			<td><span class="propertyLabel">Deinterlace input: </span>{{profile.deinterlace_input}}</td>
+		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+			href="#" class="btn btn-primary" ng-click=""
+			ng-hide="{{profile.type==='default_video'}}">EDIT</a>
+		<h3>Profile 2 to the provider</h3>
+	</div>
+	<div class="noborder panel panel-default">
+		<table class="noborder table table-default"
+			style="width: 50%; border: 0px;">
+			<tr ng-repeat="stream in streams">
+				<td><p class="propertyLabel">Stream {{stream.stream_id}}:</p>
+					<div class="input-group">
+						<input type="text" class="form-control"
+							value="Encode Width:{{stream.encode_width}}; Audio Bit Rate: {{stream.audio_bitrate}}; h266 profile: {{stream.h266_profile}}; Stream Type: {{stream.stream_type}}; Video Bit Rate: {{stream.video_bitrate}}; Audio Sample Rate: {{stream.audio_sample_rate}} ">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">COPY</button>
+						</span>
+					</div></td>
+			<tr>
+		</table>
+	</div>
 
-		</tr>
-		<tr>
-			<td><span class="propertyLabel">Override source: </span>{{profile.override_source}}</td>
-			<td><span class="propertyLabel">Multipass encoding: </span>{{profile.multipass_encoding}}</td>
-		</tr>
-	</table>
-</div>
+	<div class="noborder panel panel-default">
+		<table class="noborder table table-default"
+			style="width: 50%; border: 0px;">
+			<tr>
+				<td><span class="propertyLabel">Image interval sec: </span>{{profile.image_interval_sec}}</td>
+				<td><span class="propertyLabel">Custom image widths: </span>{{profile.custom_image_widths}}</td>
+			</tr>
+			<tr>
+				<td><span class="propertyLabel">Watermarks: </span>{{profile.watermarks}}
+					<span class="propertyLabel">Position: </span>{{profile.position}}</td>
+				<td><span class="propertyLabel">Deinterlace input: </span>{{profile.deinterlace_input}}</td>
+
+			</tr>
+			<tr>
+				<td><span class="propertyLabel">Override source: </span>{{profile.override_source}}</td>
+				<td><span class="propertyLabel">Multipass encoding: </span>{{profile.multipass_encoding}}</td>
+			</tr>
+		</table>
+	</div>
 
 
-<div class="noborder panel panel-default">
-	<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
-		ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
-		href="#" class="btn btn-primary" ng-click=""
-		ng-hide="{{profile.type==='default_video'}}">EDIT</a>
+	<div class="noborder panel panel-default">
+		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
+			href="#" class="btn btn-primary" ng-click=""
+			ng-hide="{{profile.type==='default_video'}}">EDIT</a>
+	</div>
 </div>

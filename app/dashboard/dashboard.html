@@ -24,9 +24,10 @@
 			<input type="checkbox" ng-click="checkAll()">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE DEFAULT</a> 
-			<a href="#"	class="btn btn-default" ng-show="singleCheck">EDIT</a>
-			<a href="#"	class="btn btn-default" ng-show="allChecked || singleCheck">REMOVE</a>
+			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE
+				DEFAULT</a> <a href="#" class="btn btn-default" ng-show="singleCheck">EDIT</a>
+			<a href="#" class="btn btn-default"
+				ng-show="allChecked || singleCheck">REMOVE</a>
 		</div>
 		<div style="float: right;">
 			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
@@ -60,7 +61,8 @@
 							<a href="#" class="btn btn-primary" ng-click=""
 								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
 								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
-								class="btn btn-default" ng-click="">VIEW</a> <a href="#"
+								class="btn btn-default" ng-click="">VIEW</a> <a
+								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
 								class="btn btn-default" ng-click="">EDIT</a> <a href="#"
 								class="btn btn-default" ng-click="">REMOVE</a>
 						</div>
