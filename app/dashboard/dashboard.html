@@ -24,14 +24,18 @@
 			<input type="checkbox" ng-click="checkAll()">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="#" class="btn btn-default" ng-show="singleCheck">MAKE
+			<a href="" class="btn btn-primary" ng-show="singleCheck"
+				popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE
 				DEFAULT</a> <a href="#" class="btn btn-default" ng-show="singleCheck">EDIT</a>
-			<a href="#" class="btn btn-default"
-				ng-show="allChecked || singleCheck">REMOVE</a>
+			<a href="#" class="btn btn-default" ng-show="singleCheck">VIEW</a> <a
+				href="" class="btn btn-default" ng-show="allChecked || singleCheck"
+				popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
 		</div>
 		<div style="float: right;">
-			<a href="#" class="btn btn-primary">NEW PROCESSING PROFILE</a> <a
-				href="#" class="btn btn-default">IMPORT</a> <a
+			<a href="" class="btn btn-primary" popover-trigger="mouseenter"
+				popover="Feature Coming Soon!">NEW PROCESSING PROFILE</a> <a href=""
+				class="btn btn-default" popover-trigger="mouseenter"
+				popover="Feature Coming Soon!">IMPORT</a> <a
 				href="#/providers/{{selectedProvider}}/storageconfig"
 				class="btn btn-default">MANAGE STORAGE LOCATION</a>
 		</div>
@@ -58,13 +62,17 @@
 						style="font-style: italic;">(Default)</span></td>
 					<td>
 						<div class="buttonbar hideonhover">
-							<a href="#" class="btn btn-primary" ng-click=""
-								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
-								class="btn btn-default" ng-click="">VIEW</a> <a
+							<a href="" class="btn btn-primary" ng-click=""
+								ng-hide="{{profile.type==='default_video'}}"
+								popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE
+								DEFAULT</a> <a
 								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
-								class="btn btn-default" ng-click="">EDIT</a> <a href="#"
-								class="btn btn-default" ng-click="">REMOVE</a>
+								class="btn btn-default" ng-click="">EDIT</a> <a
+								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
+								class="btn btn-default" ng-click="">VIEW</a> <a href=""
+								class="btn btn-default" ng-click=""
+								ng-hide="{{profile.type==='default_video'}}"
+								popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
 						</div>
 					</td>
 				</tr>

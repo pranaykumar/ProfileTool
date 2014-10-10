@@ -4,65 +4,89 @@
 	<li><a href="#/providers/{{selectedProvider}}">{{selectedProvider}}</a></li>
 	<li class="active">{{selectedProvider}}: STORAGE CONFIGURATION</li>
 </ol>
-<div class="panel panel-default">
-	<div class="panel-body">
 
-		<div class="newStorageDiv" ng-controller="storageconfigCntrl">
+<div class="noborder panel panel-default" style="width: 50%">
 
-			<form name="storageConfigForm" class="form-horizontal">
-				<div class="form-group">
-					<label class="storageFrmLbl col-md-5 control-label" for="name">Name</label>
-					<div class="col-md-7">
-						<input id="name" name="name" type="text" placeholder="Name"
-							class="form-control input-md" value="{{storageConfigStub.name}}" required>
-					</div>
+	<div class="newStorageDiv" ng-controller="storageconfigCntrl">
+		<div class="form-group">
+			<div>
+				<button type="submit" class="btn btn-default" ng-click="clk()"
+					ng-disabled="!storageConfigForm.$valid">DISCARD</button>
+				<button type="submit" class="btn btn-primary" ng-click="clk()"
+					ng-disabled="!storageConfigForm.$valid">SAVE</button>
+			</div>
+		</div>
+		<form name="storageConfigForm" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="name"
+					style="text-align: left;">Name</label>
+				<div class="col-md-7">
+					<input id="name" name="name" type="text" placeholder="Name"
+						class="form-control input-md" value="{{storageConfigStub.name}}"
+						required>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="type">Type</label>
-					<div class="col-md-7">
-						<select id="type" name="type" class="form-control">
-							<option ng-repeat="storageType in storageTypeStub">{{storageType.name}}</option>
-						</select>
-					</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="type"
+					style="text-align: left;">Type</label>
+
+				<div class="btn-group col-md-7" dropdown>
+					<button type="button" class="btn btn-default"
+						style="width: 150px; background: transparent; text-align: left;">{{selectedStorageOption}}</button>
+					<button type="button" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span> <span class="sr-only">Split
+							button!</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li ng-repeat="storageType in storageTypeStub"><a href=""
+							ng-click="updateStorageOption(storageType.name)">{{storageType.name}}</a></li>
+					</ul>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="bucket">Bucket</label>
-					<div class="col-md-7">
-						<input id="bucket" name="bucket" type="url" placeholder="bucket"
-							class="form-control input-md" value="{{storageConfigStub.bucket}}" required>
-					</div>
+
+
+
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="bucket"
+					style="text-align: left;">Bucket</label>
+				<div class="col-md-7">
+					<input id="bucket" name="bucket" type="url" placeholder="bucket"
+						class="form-control input-md" value="{{storageConfigStub.bucket}}"
+						required>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="accesskeyid">Access
-						Key ID</label>
-					<div class="col-md-7">
-						<input id="accesskeyid" name="accesskeyid" type="text"
-							placeholder="Access Key ID" class="form-control input-md" value="{{storageConfigStub.accessKeyId}}"
-							required>
-					</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="accesskeyid"
+					style="text-align: left;">Access Key ID</label>
+				<div class="col-md-7">
+					<input id="accesskeyid" name="accesskeyid" type="text"
+						placeholder="Access Key ID" class="form-control input-md"
+						value="{{storageConfigStub.accessKeyId}}" required>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-md-5 control-label" for="key">Key</label>
-					<div class="col-md-7">
-						<input id="key" name="key" type="text" placeholder="Key"
-							class="form-control input-md" value="{{storageConfigStub.key}}" required>
-					</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label" for="key"
+					style="text-align: left;">Key</label>
+				<div class="col-md-7">
+					<input id="key" name="key" type="text" placeholder="Key"
+						class="form-control input-md" value="{{storageConfigStub.key}}"
+						required>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<div style="margin-left: 140px;">
-						<button type="submit" class="btn btn-primary" ng-click="clk()"
-							ng-disabled="!storageConfigForm.$valid">SAVE</button>
-							<button type="submit" class="btn btn-default" ng-click="clk()"
-							ng-disabled="!storageConfigForm.$valid">DISCARD</button>
-					</div>
-				</div>
 
-			</form>
+		</form>
+		<div class="form-group">
+			<div>
+				<button type="submit" class="btn btn-default" ng-click="clk()"
+					ng-disabled="!storageConfigForm.$valid">DISCARD</button>
+				<button type="submit" class="btn btn-primary" ng-click="clk()"
+					ng-disabled="!storageConfigForm.$valid">SAVE</button>
+			</div>
 		</div>
 	</div>
 </div>

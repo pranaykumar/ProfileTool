@@ -13,20 +13,25 @@ angular.module('profileApp.view_profile', [ 'ngRoute' ])
 
 .controller('viewProfileController', function($scope, $routeParams) {
 	$scope.streams = streams;
-	$scope.profile = profile;
+	$scope.profile = viewprofile;
+	console.log(viewprofile);
 	$scope.selectedProvider = $routeParams.provider_id;
 	$scope.selectedProfile = $routeParams.profile_id;
 });
 
 // stubbed data for streams. This will be pulled from the REST api in production
 
-var profile = {
+var viewprofile = {
 	"image_interval_sec" : "100s",
 	"custom_image_widths" : "96, 100, 180",
-	"watermarks" : "Default",
+	"watermarks" : [ {
+		"url" : "Default"
+	}, {
+		"url" : "http://domain.com/img/watermark1.jpg"
+	}],
 	"position" : "Bottom",
 	"deinterlace_input" : "Active",
-	"override_source": "Inactive",
+	"override_source" : "Inactive",
 	"multipass_encoding" : "Inactive"
 };
 
@@ -68,8 +73,7 @@ var streams = [ {
 	"encrypt" : 1,
 	"key_rotation_period" : 6,
 	"video_encryption_level" : null
-},
-{
+}, {
 	"stream_id" : "3",
 	"name" : "HTTP Live Streaming audio + video",
 	"stream_type" : "single",
@@ -88,8 +92,7 @@ var streams = [ {
 	"encrypt" : 1,
 	"key_rotation_period" : 6,
 	"video_encryption_level" : null
-},
-{
+}, {
 	"stream_id" : "4",
 	"name" : "HTTP Live Streaming audio + video",
 	"stream_type" : "single",
@@ -108,4 +111,4 @@ var streams = [ {
 	"encrypt" : 1,
 	"key_rotation_period" : 6,
 	"video_encryption_level" : null
-}];
+} ];

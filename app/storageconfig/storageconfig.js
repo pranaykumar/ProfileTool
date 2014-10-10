@@ -15,6 +15,11 @@ angular.module('profileApp.storageconfig', [ 'ngRoute' ])
 	$scope.storageTypeStub = storageTypeStub;
 	$scope.storageConfigStub = storageConfigStub;
 	$scope.selectedProvider = $routeParams.provider_id;
+	$scope.selectedStorageOption = 'Default';
+	
+	$scope.updateStorageOption = function(selectedStorageOption) {
+		$scope.selectedStorageOption = selectedStorageOption;
+	}
 });
 
 var storageConfigStub = {
