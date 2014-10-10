@@ -34,19 +34,30 @@ describe(
 									expect(element(by.className('alert')).isDisplayed()).toBeTruthy();
 								});
 						
-						it('should display multiple records when more than one provider is found for a search string',
+						it('should display multiple records when more than one provider is found for a provider name',
 								function() {
 									element(by.model('providerSrchStr')).sendKeys('ESPN\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
 									expect(providerElems.count()).toBeGreaterThan(1);
 								});
 						
-						it('should display one records when exactly one provider is found for a search string',
+						it('should display one records when exactly one provider is found for a provider name',
 								function() {
 									element(by.model('providerSrchStr')).sendKeys('sky ESPN\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
-									expect(providerElems.count()).toBe(1);
+									expect(providerElems.count()).toBe(1);										
 								});
+						
+						it('should display correct provider name when exactly one provider is found for a provider name',
+								function() {
+									element(by.model('providerSrchStr')).sendKeys('sky ESPN\n');
+									var providerElements = element.all(by.tagName('td'));
+									providerElements.first().then(function(elm) {
+									expect(elm.getText()).toEqual('sky ESPN');
+									});
+									
+								});
+						
 						
 						it('should display multiple records when more than one provider is found for a Provider ID',
 								function() {
@@ -62,7 +73,7 @@ describe(
 									expect(providerElems.count()).toBe(1);
 								});
 												
-						it('should display multiple records when more than one provider is found for a Provider ID',
+						it('should display multiple records when more than one provider is found for a Provider E-mail',
 								function() {
 									element(by.model('providerSrchStr')).sendKeys('digital\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
@@ -70,7 +81,7 @@ describe(
 								});
 						
 
-						it('should display one records when exactly one provider is found for a Provider ID',
+						it('should display one records when exactly one provider is found for a Provider E-mail',
 								function() {
 									element(by.model('providerSrchStr')).sendKeys('blue\n');
 									var providerElems = element.all(by.repeater('provider in providers'));
