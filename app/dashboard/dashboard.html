@@ -21,23 +21,18 @@
 	</ol>
 	<div id="checkalldiv" class="panel panel-body">
 		<div id="checkboxdiv">
-			<input type="checkbox" ng-click="checkAll()">
+			<input type="checkbox"  ng-click="checkAll()" ng-model="allChecked">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="" class="btn btn-primary" ng-show="singleCheck"
-				popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE
-				DEFAULT</a> <a href="#" class="btn btn-default" ng-show="singleCheck">EDIT</a>
-			<a href="#" class="btn btn-default" ng-show="singleCheck">VIEW</a> <a
-				href="" class="btn btn-default" ng-show="allChecked || singleCheck"
-				popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
+			<a href="" class="btn btn-primary" ng-show="singleCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE DEFAULT</a>
+			<a href="" class="btn btn-default" ng-show="singleCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">EDIT</a>
+			<a href="#" class="btn btn-default" ng-show="singleCheck">VIEW</a> 
+			<a href="" class="btn btn-default" ng-show="allChecked || singleCheck || multiCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
 		</div>
 		<div style="float: right;">
-			<a href="" class="btn btn-primary" popover-trigger="mouseenter"
-				popover="Feature Coming Soon!">NEW PROCESSING PROFILE</a> <a href=""
-				class="btn btn-default" popover-trigger="mouseenter"
-				popover="Feature Coming Soon!">IMPORT</a> <a
-				href="#/providers/{{selectedProvider}}/storageconfig"
-				class="btn btn-default">MANAGE STORAGE LOCATION</a>
+			<a href="" class="btn btn-primary" popover-trigger="mouseenter"	popover="Feature Coming Soon!">NEW PROCESSING PROFILE</a> 
+			<a href="" class="btn btn-default" popover-trigger="mouseenter"	popover="Feature Coming Soon!">IMPORT</a> 
+			<a href="#/providers/{{selectedProvider}}/storageconfig" class="btn btn-default">VIEW STORAGE LOCATION</a>
 		</div>
 	</div>
 
@@ -47,27 +42,25 @@
 		<form class="form-inline" role="form">
 			<table class="table">
 				<tr ng-repeat="profile in profiles" table-Rowhover profile-Rowhover>
-					<td class="verticalmid"><img id="lockicon"
-						alt="locked profile" src="images/lockicon.png"
-						ng-show="allChecked && (profile.type==='default_video')"><label
-						class="checkbox"
-						ng-hide="allChecked && (profile.type==='default_video')">
-							<input type="checkbox" ng-click="updateCheckFlag(profile.type)"
-							ng-checked="allChecked"
-							ng-disabled="profile.type==='default_video'">
-					</label> <span ns-popover ns-popover-template="popover$index"
+					<td class="verticalmid">
+					<img id="lockicon" alt="locked profile" src="images/lockicon.png" ng-show="allChecked && (profile.type==='default_video')">
+					<label class="checkbox"	ng-hide="allChecked && (profile.type==='default_video')">
+					<input type="checkbox" ng-change="updateCheckFlags(profile.type)" ng-model="profile.checked" ng-disabled="{{profile.type==='default_video'}}">
+					</label> 
+					<span ns-popover ns-popover-template="popover$index"
 						ns-popover-trigger="mouseover" ns-popover-placement="right"
 						ns-popover-hide-on-click="true" ns-popover-timeout="0">{{profile.name}}</span>
-						<span ng-show="{{profile.type==='default_video'}}"
-						style="font-style: italic;">(Default)</span></td>
+					<span ng-show="{{profile.type==='default_video'}}" style="font-style: italic;">(Default)</span>
+					<span style="font-weight: bold;">{{profile.checked}}</span>
+					</td>
 					<td>
 						<div class="buttonbar hideonhover">
 							<a href="" class="btn btn-primary" ng-click=""
 								ng-hide="{{profile.type==='default_video'}}"
 								popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE
 								DEFAULT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
-								class="btn btn-default" ng-click="">EDIT</a> <a
+								href=""
+								class="btn btn-default" ng-click="" popover-trigger="mouseenter" popover="Feature Coming Soon!">EDIT</a> <a
 								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
 								class="btn btn-default" ng-click="">VIEW</a> <a href=""
 								class="btn btn-default" ng-click=""
