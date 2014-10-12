@@ -15,7 +15,7 @@
 </script>
 
 <div ng-controller="providersCntrl">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb" ng-controller="breadcrumbController">
 		<li><a href="#/providers">Back to Provider Search</a></li>
 		<li class="active">{{provider_name}}: PROCESSING PROFILES</li>
 	</ol>
@@ -25,7 +25,7 @@
 		</div>
 		<div style="float: left; padding-left: 10px;">
 			<a href="" class="btn btn-primary" ng-show="singleCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">MAKE DEFAULT</a>
-			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit" class="btn btn-default" ng-show="singleCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">EDIT</a>
+			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit" class="btn btn-default" ng-show="singleCheck">EDIT</a>
 			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}" class="btn btn-default" ng-show="singleCheck">VIEW</a> 
 			<a href="" class="btn btn-default" ng-show="allChecked || singleCheck || multiCheck" popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
 		</div>

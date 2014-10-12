@@ -13,7 +13,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 
 .controller(
 		'providersCntrl',
-		function($scope, $http, $routeParams, ProfileService, ProviderService) {
+		function($scope, $http, $routeParams, ProfileService) {
 			$scope.providerSrchStr = '';
 			$scope.selectedProvider = $routeParams.provider_id;
 			$scope.profileCount = 0;
@@ -23,12 +23,6 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 			$scope.multiCheck = multiCheck;
 			var allChecked = false;
 			$scope.allChecked = allChecked;
-
-			// Call to ProviderService to details of provider
-			ProviderService.getProvider($routeParams.provider_id).then(
-					function(data) {
-						$scope.provider_name = data[0].name;
-					});
 
 			// Call the service and wait for it to finish and then
 			// populate the Profiles variable in scope using a callback

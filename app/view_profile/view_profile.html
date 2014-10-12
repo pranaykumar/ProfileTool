@@ -1,6 +1,6 @@
 <div ng-controller="viewProfileController">
 
-	<ol class="breadcrumb">
+	<ol class="breadcrumb" ng-controller="breadcrumbController">
 		<li><a href="#/providers">Back to Provider Search</a></li>
 		<li><a href="#/providers/{{selectedProvider}}">{{provider_name}}</a></li>
 		<li class="active">{{selectedProfile}}</li>
