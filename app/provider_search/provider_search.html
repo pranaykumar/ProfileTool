@@ -1,16 +1,14 @@
 <div ng-controller="providerSearchController">
-	<form role="form" name="providerSrcForm">
+	<form class="form-inline" role="form" name="providerSrchForm">
 		<div class="form-group">
-			<label class="sr-only" for="provider">Search Provider</label>
-			<div class="row">
-				<div class="col-lg-3">
-					<input id="searchbox" type="search" class="form-control"
-						placeholder="Search provider by name, ID or email"
-						ng-model="providerSrchStr" ng-change="searchProvider()" required
-						focus>
-				</div>
-			</div>
+			<label class="sr-only" for="provider">Search Provider</label> <input
+				id="searchbox" type="search" class="form-control"
+				placeholder="Search provider by name, ID or email"
+				ng-model="providerSrchStr" required focus>
 		</div>
+		<button type="submit" class="btn btn-primary"
+			ng-click="searchProvider()" ng-disabled="!providerSrchForm.$valid">Search</button>
+
 	</form>
 
 	<div class="alert alert-danger alert-dismissible" role="alert"
@@ -30,9 +28,16 @@
 				<td class="verticalmid">{{provider.provider_id}}</td>
 				<td class="verticalmid">{{provider.email}}</td>
 				<td style="text-align: center;">
-				<div style="height: 35px;"><div class="showonhover"><span>{{provider.profile_count | nullNumberFormatter}}</div>
-					<div class="hideonhover"><a class="btn btn-primary"
-					href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a></div></div></td>
+					<div style="height: 35px;">
+						<div class="showonhover">
+							<span>{{provider.profile_count | nullNumberFormatter}} 
+						</div>
+						<div class="hideonhover">
+							<a class="btn btn-primary"
+								href="#/providers/{{provider.provider_id}}">MANAGE PROFILES</a>
+						</div>
+					</div>
+				</td>
 
 			</tr>
 		</table>

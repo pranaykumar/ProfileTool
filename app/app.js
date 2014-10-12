@@ -6,6 +6,8 @@ angular.module('profileApp', [
   'ui.bootstrap',
   'nsPopover',
   'profileApp.directives',
+  'profileApp.services',
+  'profileApp.filters',
   'profileApp.provider_search',
   'profileApp.dashboard',
   'profileApp.storageconfig',
@@ -17,4 +19,4 @@ config(['$routeProvider', function($routeProvider) {
 }]);
 
 //Helios REST API IP
-var IP = '192.168.2.4';
+var IP = '192.168.2.6';

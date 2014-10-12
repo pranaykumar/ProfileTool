@@ -14,21 +14,19 @@ angular
 
 		.controller(
 				'providerSearchController',
-				function($scope, $http) {
+				function($scope, $http, ProviderService) {
 					$scope.providerSrchStr = '';
 					$scope.providerSelected = false;
 
 					$scope.searchProvider = function() {
+						console.log($scope.providerSrchStr);
 
 						$scope.noProviderAlrtMsg = '';
 						$scope.noProviderErr = false;
 
-						$http
-								.get(
-										'http://' + IP
-												+ ':3000/api/providersearch/'
-												+ $scope.providerSrchStr)
-								.success(
+						ProviderService
+								.getProviders($scope.providerSrchStr)
+								.then(
 										function(data) {
 											$scope.providers = data;
 											console.log($scope.providers);
@@ -39,14 +37,4 @@ angular
 										});
 					};
 
-				})
-
-		.filter('nullNumberFormatter', function() {
-			var myNullNumberFormatter = function(input) {
-				if (input === null)
-					return 0;
-				else
-					return input;
-			};
-			return myNullNumberFormatter;
-		});
+				});

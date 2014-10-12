@@ -11,13 +11,20 @@ angular.module('profileApp.view_profile', [ 'ngRoute' ])
 	});
 } ])
 
-.controller('viewProfileController', function($scope, $routeParams) {
-	$scope.streams = streams;
-	$scope.profile = viewprofile;
-	console.log(viewprofile);
-	$scope.selectedProvider = $routeParams.provider_id;
-	$scope.selectedProfile = $routeParams.profile_id;
-});
+.controller(
+		'viewProfileController',
+		function($scope, $routeParams, ProviderService) {
+			$scope.streams = streams;
+			$scope.profile = viewprofile;
+			$scope.selectedProvider = $routeParams.provider_id;
+			$scope.selectedProfile = $routeParams.profile_id;
+
+			// Call to ProviderService to details of provider
+			ProviderService.getProvider($routeParams.provider_id).then(
+					function(data) {
+						$scope.provider_name = data[0].name;
+					});
+		});
 
 // stubbed data for streams. This will be pulled from the REST api in production
 
@@ -28,7 +35,7 @@ var viewprofile = {
 		"url" : "Default"
 	}, {
 		"url" : "http://domain.com/img/watermark1.jpg"
-	}],
+	} ],
 	"position" : "Bottom",
 	"deinterlace_input" : "Active",
 	"override_source" : "Inactive",

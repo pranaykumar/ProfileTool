@@ -13,7 +13,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 
 .controller(
 		'providersCntrl',
-		function($scope, $http, $routeParams, ProfileService) {
+		function($scope, $http, $routeParams, ProfileService, ProviderService) {
 			$scope.providerSrchStr = '';
 			$scope.selectedProvider = $routeParams.provider_id;
 			$scope.profileCount = 0;
@@ -24,6 +24,12 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 			var allChecked = false;
 			$scope.allChecked = allChecked;
 
+			// Call to ProviderService to details of provider
+			ProviderService.getProvider($routeParams.provider_id).then(
+					function(data) {
+						$scope.provider_name = data[0].name;
+					});
+
 			// Call the service and wait for it to finish and then
 			// populate the Profiles variable in scope using a callback
 			ProfileService.getProfiles($routeParams.provider_id).then(
@@ -32,7 +38,8 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 					}).then(function() {
 				$scope.profileCount = $scope.profiles.length;
 				// Adding checked flag for each profile
-				// which can then be used to bind the UI check box controls
+				// which can then be used to bind the UI check box
+				// controls
 				angular.forEach($scope.profiles, function(profile) {
 					profile['checked'] = false;
 				});
@@ -54,6 +61,10 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 					if (checkedCount == 1) {
 						$scope.singleCheck = true;
 						$scope.multiCheck = false;
+						$scope.selectedProfile = $scope.profiles
+								.filter(function(profile) {
+									return profile['checked'] === true
+								})[0].profile_id;
 					} else {
 						$scope.singleCheck = false;
 						$scope.multiCheck = true;
@@ -66,7 +77,8 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				$scope.allChecked = !$scope.allChecked;
 
 				if ($scope.allChecked) {
-					// check all check boxes when check all is True except the
+					// check all check boxes when check all is True
+					// except the
 					// default profile
 					angular.forEach($scope.profiles, function(profile) {
 						if (profile['type'] !== 'default_video')
@@ -80,43 +92,4 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				}
 			};
 
-		})
-
-.factory(
-		'ProfileService',
-		function($http, $q) {
-			return {
-				getProfiles : function(provider_id) {
-					// the $http API is based on the deferred/promise
-					// APIs
-					// exposed by
-					// the $q service
-					// so it returns a promise for us by default
-					return $http.get(
-							'http://' + IP + ':3000/api/providers/'
-									+ provider_id + '/profiles').then(
-							function(response) {
-								if (typeof response.data === 'object') {
-									return response.data;
-								} else {
-									// invalid response
-									return $q.reject(response.data);
-								}
-
-							}, function(response) {
-								// something went wrong
-								return $q.reject(response.data);
-							});
-				}
-			};
-		})
-
-.filter('booleanFormatter', function() {
-	var myBooleanFilter = function(input) {
-		if (input == 1)
-			return "True";
-		else
-			return "False";
-	};
-	return myBooleanFilter;
-});
+		});

@@ -79,6 +79,9 @@ footer {
 	color: white;
 }
 
+.gridclass{
+	margin-top: 10px;
+}
 .storageDiv {
 	float: right;
 	margin-right: 10px;
