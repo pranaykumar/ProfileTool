@@ -19,7 +19,6 @@ angular
 					$scope.providerSelected = false;
 
 					$scope.searchProvider = function() {
-						console.log($scope.providerSrchStr);
 
 						$scope.noProviderAlrtMsg = '';
 						$scope.noProviderErr = false;
@@ -29,7 +28,6 @@ angular
 								.then(
 										function(data) {
 											$scope.providers = data;
-											console.log($scope.providers);
 											if (data.length === 0) {
 												$scope.noProviderAlrtMsg = "No Provider found for the given criteria!";
 												$scope.noProviderErr = true;

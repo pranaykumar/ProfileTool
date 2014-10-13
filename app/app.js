@@ -19,13 +19,21 @@ angular.module('profileApp', [
   $routeProvider.otherwise({redirectTo: '/providers'});
 }])
 
-.controller('breadcrumbController', function($http, $scope, $routeParams, ProviderService) {
+.controller('breadcrumbController', function($http, $scope, $routeParams, ProviderService, ProfileService) {
 	// Call to ProviderService to details of provider
 	ProviderService.getProvider($routeParams.provider_id).then(
 			function(data) {
 				$scope.provider_name = data[0].name;
 			});
+	
+	// Call to ProfileService to details of selected profile
+	if($routeParams.profile_id !== undefined){
+		ProfileService.getProfile($routeParams.profile_id).then(
+				function(data) {
+					$scope.profile_name = data[0].name;
+				});
+	}
 });
 
 //Helios REST API IP
-var IP = '192.168.2.6';
+var IP = '172.21.248.61';

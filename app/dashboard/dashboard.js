@@ -71,6 +71,9 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				$scope.allChecked = !$scope.allChecked;
 
 				if ($scope.allChecked) {
+					$scope.singleCheck = false;
+					$scope.multiCheck = false;
+					
 					// check all check boxes when check all is True
 					// except the
 					// default profile
@@ -79,6 +82,8 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 							profile['checked'] = true;
 					});
 				} else {
+					$scope.singleCheck = false;
+					$scope.multiCheck = false;
 					// uncheck all check boxes when check all is False
 					angular.forEach($scope.profiles, function(profile) {
 						profile['checked'] = false;

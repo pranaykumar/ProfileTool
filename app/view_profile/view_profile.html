@@ -3,7 +3,7 @@
 	<ol class="breadcrumb" ng-controller="breadcrumbController">
 		<li><a href="#/providers">Back to Provider Search</a></li>
 		<li><a href="#/providers/{{selectedProvider}}">{{provider_name}}</a></li>
-		<li class="active">{{selectedProfile}}</li>
+		<li class="active">{{profile_name}}</li>
 	</ol>
 	<div class="noborder panel panel-default">
 		<h3>View Profile</h3>
@@ -16,7 +16,7 @@
 		<table class="noborder table table-default"
 			style="width: 50%; border: 0px;">
 			<tr ng-repeat="stream in streams">
-				<td><p class="propertyLabel">Stream {{stream.stream_id}}:</p>
+				<td><p class="propertyLabel">Stream {{stream.id}}:</p>
 					<div class="input-group">
 						<input type="text" class="form-control"
 							value="Encode Width:{{stream.encode_width}}; Audio Bit Rate: {{stream.audio_bitrate}}; h266 profile: {{stream.h266_profile}}; Stream Type: {{stream.stream_type}}; Video Bit Rate: {{stream.video_bitrate}}; Audio Sample Rate: {{stream.audio_sample_rate}} ">

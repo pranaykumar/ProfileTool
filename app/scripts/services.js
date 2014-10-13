@@ -61,6 +61,23 @@ angular.module('profileApp.services', [ 'ngRoute' ])
 								// something went wrong
 								return $q.reject(response.data);
 							});
+				},
+				getProfile : function(profile_id) {
+					return $http.get(
+							'http://' + IP + ':3000/api/profile/'
+									+ profile_id).then(
+							function(response) {
+								if (typeof response.data === 'object') {
+									return response.data;
+								} else {
+									// invalid response
+									return $q.reject(response.data);
+								}
+
+							}, function(response) {
+								// something went wrong
+								return $q.reject(response.data);
+							});
 				}
 			};
 		});
