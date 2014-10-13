@@ -9,7 +9,7 @@
 		<h3>View Profile</h3>
 
 		<a href="#/providers/{{selectedProvider}}" class="btn btn-default">CANCEL</a> 
-		<a href="" class="btn btn-primary" popover-trigger="mouseenter" popover="Feature Coming Soon!">EDIT</a>
+		<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit" class="btn btn-primary">EDIT</a>
 		<h3>Profile 2 to the provider</h3>
 	</div>
 	<div class="noborder panel panel-default">
@@ -51,11 +51,11 @@
 			</tr>
 		
 			<tr>
-				<td><span class="propertyLabel">Deinterlace input: </span>{{profile.deinterlace_input}}</td>
-				<td><span class="propertyLabel">Override source: </span>{{profile.override_source}}</td>
+				<td><span class="propertyLabel">Deinterlace input: </span>{{profile.deinterlace_input | booleanFormatter}}</td>
+				<td><span class="propertyLabel">Override source: </span>{{profile.override_source | booleanFormatter}}</td>
 			</tr>
 			<tr>
-				<td><span class="propertyLabel">Multipass encoding: </span>{{profile.multipass_encoding}}</td>
+				<td><span class="propertyLabel">Multipass encoding: </span>{{profile.mezzanine_multipass_encoding | booleanFormatter}}</td>
 			</tr>
 		</table>
 	</div>
@@ -63,6 +63,6 @@
 
 	<div class="noborder panel panel-default">
 		<a href="#/providers/{{selectedProvider}}" class="btn btn-default">CANCEL</a> 
-		<a href="" class="btn btn-primary" popover-trigger="mouseenter" popover="Feature Coming Soon!">EDIT</a>
+		<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit" class="btn btn-primary">EDIT</a>
 	</div>
 </div>

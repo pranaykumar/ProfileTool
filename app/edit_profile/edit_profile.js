@@ -13,7 +13,7 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 
 .controller(
 		'editProfileController',
-		function($scope, $routeParams, ProfileService) {
+		function($scope, $routeParams, $http, ProfileService) {
 			// $scope.streams = streams;
 			// $scope.profile = profile;
 			$scope.selectedProvider = $routeParams.provider_id;
@@ -30,6 +30,32 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 
 			$scope.updateStreamOption = function(streamIndex) {
 				$scope.selectedStream = $scope.streams[streamIndex];
+			};
+			
+			$scope.SaveProfile = function() {
+				console.log($scope.profile.image_interval_sec);
+				console.log($scope.profile.deinterlace_input);
+				console.log($scope.profile.override_source);
+				
+				$http(
+						{
+							method : 'PUT',
+							url : 'http://' + IP + ':3000/api/profile/'
+									+ $routeParams.profile_id,
+							data : {
+								"image_interval_sec" : $scope.profile.image_interval_sec,
+								"custom_image_widths" : $scope.profile.custom_image_widths,
+								"deinterlace_input" : $scope.profile.deinterlace_input,
+								"override_source" : $scope.profile.override_source,
+								"mezzanine_multipass_encoding" : $scope.profile.mezzanine_multipass_encoding
+							},
+							headers : {
+								'content-type' : 'application/json'
+							}
+						}).success(function(data) {
+					alert(data[0].msg);
+				});
+
 			}
 		});
 

@@ -19,8 +19,9 @@
 			<tr>
 				<td><span class="propertyLabel">Image interval sec</span></td>
 				<td><div class="col-lg-13">
-						<input id="name" name="name" type="number" placeholder="Enter Numeric Value"
-							class="form-control input-md"
+						<input id="name" name="name" type="number"
+							placeholder="Enter Numeric Value" class="form-control input-md"
+							ng-model="profile.image_interval_sec"
 							value="{{profile.image_interval_sec}}" required>
 					</div></td>
 			</tr>
@@ -29,6 +30,7 @@
 				<td><div class="col-lg-13">
 						<input id="name" name="name" type="text" placeholder="Name"
 							class="form-control input-md"
+							ng-model="profile.custom_image_widths"
 							value="{{profile.custom_image_widths}}" required>
 					</div></td>
 			</tr>
@@ -37,20 +39,25 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<div style="padding-left: 0px;" class="btn-group col-md-9" dropdown>
+					<div style="padding-left: 0px; padding-right: 0px;"
+						class="btn-group col-md-9" dropdown>
 						<button type="button" class="btn btn-default"
-							style="width: 350px; background: transparent; text-align: left;">{{selectedStream.id}}
-							- <strong>{{selectedStream.name}}</strong> - {{selectedStream.stream_type}}</button>
+							style="width: 315px; background: transparent; text-align: left;">
+							{{selectedStream.id}} - <strong>{{selectedStream.name}}</strong>
+							- {{selectedStream.stream_type}}
+						</button>
 						<button type="button" class="btn btn-default dropdown-toggle">
 							<span class="caret"></span> <span class="sr-only">Split
 								button!</span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li ng-repeat="stream in streams"><a href=""
-								ng-click="updateStreamOption($index)">{{stream.id}}
-									- <strong>{{stream.name}}</strong> - {{stream.stream_type}}</a></li>
+								ng-click="updateStreamOption($index)">{{stream.id}} - <strong>{{stream.name}}</strong>
+									- {{stream.stream_type}}
+							</a></li>
 						</ul>
-					</div> <div style="float: right;">
+					</div>
+					<div style="float: right;">
 						<a href="#" class="btn btn-default" ng-click="">NEW</a> <a
 							href="#" class="btn btn-default" ng-click="">EDIT</a>
 					</div>
@@ -88,11 +95,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input type="checkbox"> <label>Deinterlace
-						input</label></td>
+				<td><input type="checkbox" ng-model="profile.deinterlace_input"
+					ng-true-value="1" ng-false-value="0" ng-checked="profile.deinterlace_input == 1">
+					<label>Deinterlace input</label></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox"> <label>Override
+				<td><input type="checkbox" ng-model="profile.override_source"
+					ng-true-value="1" ng-false-value="0" ng-checked="profile.override_source == 1"> <label>Override
 						Source</label></td>
 				<td><select id="type" name="type" class="form-control">
 						<option>Bottom</option>
@@ -102,7 +111,8 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox"> <label>Multipass
+				<td><input type="checkbox" ng-model="profile.mezzanine_multipass_encoding"
+					ng-true-value="1" ng-false-value="0" ng-checked="profile.mezzanine_multipass_encoding == 1"> <label>Multipass
 						encoding</label></td>
 			</tr>
 		</table>
@@ -110,7 +120,7 @@
 	<div class="noborder panel panel-default">
 		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
 			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
-			href="" class="btn btn-primary" ng-click=""
+			href="" class="btn btn-primary" ng-click="SaveProfile()"
 			ng-hide="{{profile.type==='default_video'}}"
 			popover-trigger="mouseenter" popover="Feature Coming Soon!">SAVE</a>
 	</div>
