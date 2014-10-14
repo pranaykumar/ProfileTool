@@ -23,6 +23,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 			$scope.multiCheck = multiCheck;
 			var allChecked = false;
 			$scope.allChecked = allChecked;
+			$scope.confirmationAlert = '';
 
 			// Call the service and wait for it to finish and then
 			// populate the Profiles variable in scope using a callback
@@ -39,6 +40,10 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				});
 			});
 
+			$scope.closeAlert = function() {
+				$scope.confirmationAlert = '';
+			};
+			
 			$scope.updateCheckFlags = function(profile_type) {
 
 				var checkedCount = $scope.profiles.filter(function(profile) {
@@ -104,8 +109,9 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 						'content-type' : 'application/json'
 					}
 				}).success(function(data) {
-					//$route.reload();
-					// Refresh profile data on the page to reflect changed default selection
+					// $route.reload();
+					// Refresh profile data on the page to reflect changed
+					// default selection
 					ProfileService.getProfiles($routeParams.provider_id).then(
 							function(data) {
 								$scope.profiles = data;
@@ -122,7 +128,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				});
 			};
 			
-			//removes a single profile
+			// removes a single profile
 			$scope.removeProfile =  function(profile_id) {
 				console.log(profile_id);
 
@@ -133,7 +139,11 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 						'content-type' : 'application/json'
 					}
 				}).success(function(data) {
-					// Refresh profile data on the page to reflect removed profile
+
+					$scope.confirmationAlert = data[0].msg;
+
+					// Refresh profile data on the page to reflect removed
+					// profile
 					ProfileService.getProfiles($routeParams.provider_id).then(
 							function(data) {
 								$scope.profiles = data;
@@ -151,12 +161,14 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 			};
 			
 			
-			//removes multiple profiles
+			// removes multiple profiles
 			$scope.removeProfiles =  function() {
+				
 				var markedForDelProfiles = $scope.profiles.filter(function(profile) {
 					return profile['checked'] === true
-				}));
+				});
 				
+				console.log(markedForDelProfiles);
 
 				$http({
 					method : 'DELETE',
@@ -168,7 +180,11 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 						'content-type' : 'application/json'
 					}
 				}).success(function(data) {
-					// Refresh profile data on the page to reflect removed profile
+					
+					$scope.confirmationAlert = data[0].msg;
+					
+					// Refresh profile data on the page to reflect removed
+					// profile
 					ProfileService.getProfiles($routeParams.provider_id).then(
 							function(data) {
 								$scope.profiles = data;
