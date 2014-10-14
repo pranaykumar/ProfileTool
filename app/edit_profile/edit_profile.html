@@ -11,8 +11,7 @@
 		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
 			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
 			href="" class="btn btn-primary" ng-click=""
-			ng-hide="{{profile.type==='default_video'}}"
-			popover-trigger="mouseenter" popover="Feature Coming Soon!">SAVE</a>
+			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
 		<h3>Profile 2 to the provider</h3>
 		<table class="noborder table table-default"
 			style="width: 40%; border: 0px;">
@@ -96,12 +95,14 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" ng-model="profile.deinterlace_input"
-					ng-true-value="1" ng-false-value="0" ng-checked="profile.deinterlace_input == 1">
-					<label>Deinterlace input</label></td>
+					ng-true-value="1" ng-false-value="0"
+					ng-checked="profile.deinterlace_input == 1"> <label>Deinterlace
+						input</label></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" ng-model="profile.override_source"
-					ng-true-value="1" ng-false-value="0" ng-checked="profile.override_source == 1"> <label>Override
+					ng-true-value="1" ng-false-value="0"
+					ng-checked="profile.override_source == 1"> <label>Override
 						Source</label></td>
 				<td><select id="type" name="type" class="form-control">
 						<option>Bottom</option>
@@ -111,8 +112,10 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" ng-model="profile.mezzanine_multipass_encoding"
-					ng-true-value="1" ng-false-value="0" ng-checked="profile.mezzanine_multipass_encoding == 1"> <label>Multipass
+				<td><input type="checkbox"
+					ng-model="profile.mezzanine_multipass_encoding" ng-true-value="1"
+					ng-false-value="0"
+					ng-checked="profile.mezzanine_multipass_encoding == 1"> <label>Multipass
 						encoding</label></td>
 			</tr>
 		</table>
@@ -121,7 +124,6 @@
 		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
 			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
 			href="" class="btn btn-primary" ng-click="SaveProfile()"
-			ng-hide="{{profile.type==='default_video'}}"
-			popover-trigger="mouseenter" popover="Feature Coming Soon!">SAVE</a>
+			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
 	</div>
 </div>

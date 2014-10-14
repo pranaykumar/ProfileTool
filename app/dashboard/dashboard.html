@@ -3,8 +3,8 @@
 	ng-repeat="profile in profiles">
 <div style="background-color: #fff; border:1px solid #ddd; padding:10px; box-shadow: 0 0 1em #7F8488;"><h3>Profile Configuration</h3>
   <table class="table noborder">
-	<tr><td style="border: 0px;"><span class="propertyLabel">Image interval sec: </span></td><td style="border: 0px;">100s</td></tr>
-	<tr><td style="border: 0px;"><span class="propertyLabel">Custom image widths: </span></td><td style="border: 0px;">96, 100, 180</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Image interval sec: </span></td><td style="border: 0px;">{{profile.image_interval_sec}}</td></tr>
+	<tr><td style="border: 0px;"><span class="propertyLabel">Custom image widths: </span></td><td style="border: 0px;">{{profile.custom_image_widths}}</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Streams: </span></td><td style="border: 0px; width: 175px;"><span ng-repeat="stream in profile.streams"><span ng:hide='$index==0'>, </span>{{stream.name}}</span</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Watermarks: </span>Default</td><td style="border: 0px;"><span class="propertyLabel">Position: </span>Bottom</td></tr>
 	<tr><td style="border: 0px;"><span class="propertyLabel">Deinterlace Input: </span></td><td style="border: 0px;">{{profile.deinterlace_input | booleanFormatter}}</td></tr>
@@ -24,15 +24,10 @@
 			<input type="checkbox" ng-click="checkAll()" ng-model="allChecked">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="" class="btn btn-primary" ng-show="singleCheck">MAKE
-				DEFAULT</a> <a
-				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"
-				class="btn btn-default" ng-show="singleCheck">EDIT</a> <a
-				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}"
-				class="btn btn-default" ng-show="singleCheck">VIEW</a> <a href=""
-				class="btn btn-default"
-				ng-show="allChecked || singleCheck || multiCheck"
-				popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
+			<a href="" class="btn btn-primary" ng-show="singleCheck" ng-click="makeDefault(selectedProfile)">MAKE DEFAULT</a> 
+			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"	class="btn btn-default" ng-show="singleCheck">EDIT</a> 
+			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}" class="btn btn-default" ng-show="singleCheck">VIEW</a> 
+			<a href="" class="btn btn-default" ng-show="allChecked || singleCheck || multiCheck" ng-click="removeProfiles()">REMOVE</a>
 		</div>
 		<div style="float: right;">
 			<a href="" class="btn btn-primary" popover-trigger="mouseenter"
@@ -65,15 +60,10 @@
 						style="font-style: italic;">(Default)</span></td>
 					<td>
 						<div class="buttonbar hideonhover">
-							<a href="" class="btn btn-primary" ng-click=""
-								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
-								class="btn btn-default" ng-click="">EDIT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
-								class="btn btn-default" ng-click="">VIEW</a> <a href=""
-								class="btn btn-default" ng-click=""
-								ng-hide="{{profile.type==='default_video'}}"
-								popover-trigger="mouseenter" popover="Feature Coming Soon!">REMOVE</a>
+							<a href="" class="btn btn-primary" ng-click="makeDefault(profile.profile_id)" ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> 
+							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit" class="btn btn-default" ng-click="">EDIT</a> 
+							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}" class="btn btn-default" ng-click="">VIEW</a> 
+							<a href="" class="btn btn-default" ng-hide="{{profile.type==='default_video'}}" ng-click="removeProfile(profile.profile_id)">REMOVE</a>
 						</div>
 					</td>
 				</tr>

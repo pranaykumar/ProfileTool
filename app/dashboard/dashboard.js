@@ -13,7 +13,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 
 .controller(
 		'providersCntrl',
-		function($scope, $http, $routeParams, ProfileService) {
+		function($scope, $http, $routeParams, $route, ProfileService) {
 			$scope.providerSrchStr = '';
 			$scope.selectedProvider = $routeParams.provider_id;
 			$scope.profileCount = 0;
@@ -73,7 +73,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				if ($scope.allChecked) {
 					$scope.singleCheck = false;
 					$scope.multiCheck = false;
-					
+
 					// check all check boxes when check all is True
 					// except the
 					// default profile
@@ -91,4 +91,98 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				}
 			};
 
+			$scope.makeDefault = function(profile_id) {
+
+				$http({
+					method : 'PUT',
+					url : 'http://' + IP + ':3000/api/profile/' + profile_id,
+					data : {
+						'profile_type' : 'default_video',
+						'provider_id' : $scope.selectedProvider
+					},
+					headers : {
+						'content-type' : 'application/json'
+					}
+				}).success(function(data) {
+					//$route.reload();
+					// Refresh profile data on the page to reflect changed default selection
+					ProfileService.getProfiles($routeParams.provider_id).then(
+							function(data) {
+								$scope.profiles = data;
+							}).then(function() {
+						$scope.profileCount = $scope.profiles.length;
+						$scope.singleCheck = false;
+						$scope.multiCheck = false;
+						$scope.allChecked = false;
+
+						angular.forEach($scope.profiles, function(profile) {
+							profile['checked'] = false;
+						});
+					});
+				});
+			};
+			
+			//removes a single profile
+			$scope.removeProfile =  function(profile_id) {
+				console.log(profile_id);
+
+				$http({
+					method : 'DELETE',
+					url : 'http://' + IP + ':3000/api/profile/' + profile_id,
+					headers : {
+						'content-type' : 'application/json'
+					}
+				}).success(function(data) {
+					// Refresh profile data on the page to reflect removed profile
+					ProfileService.getProfiles($routeParams.provider_id).then(
+							function(data) {
+								$scope.profiles = data;
+							}).then(function() {
+						$scope.profileCount = $scope.profiles.length;
+						$scope.singleCheck = false;
+						$scope.multiCheck = false;
+						$scope.allChecked = false;
+
+						angular.forEach($scope.profiles, function(profile) {
+							profile['checked'] = false;
+						});
+					});
+				});
+			};
+			
+			
+			//removes multiple profiles
+			$scope.removeProfiles =  function() {
+				var markedForDelProfiles = $scope.profiles.filter(function(profile) {
+					return profile['checked'] === true
+				}));
+				
+
+				$http({
+					method : 'DELETE',
+					url : 'http://' + IP + ':3000/api/profile/',
+					data : {
+						'profiles' :  markedForDelProfiles						
+					},
+					headers : {
+						'content-type' : 'application/json'
+					}
+				}).success(function(data) {
+					// Refresh profile data on the page to reflect removed profile
+					ProfileService.getProfiles($routeParams.provider_id).then(
+							function(data) {
+								$scope.profiles = data;
+							}).then(function() {
+						$scope.profileCount = $scope.profiles.length;
+						$scope.singleCheck = false;
+						$scope.multiCheck = false;
+						$scope.allChecked = false;
+
+						angular.forEach($scope.profiles, function(profile) {
+							profile['checked'] = false;
+						});
+					});
+				});
+			};
+			
 		});

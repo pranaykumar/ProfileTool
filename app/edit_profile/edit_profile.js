@@ -27,27 +27,22 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 						$scope.selectedStream = $scope.profile.streams[0];
 					});
 
-
 			$scope.updateStreamOption = function(streamIndex) {
 				$scope.selectedStream = $scope.streams[streamIndex];
 			};
-			
+
 			$scope.SaveProfile = function() {
 				console.log($scope.profile.image_interval_sec);
 				console.log($scope.profile.deinterlace_input);
 				console.log($scope.profile.override_source);
-				
+
 				$http(
 						{
 							method : 'PUT',
 							url : 'http://' + IP + ':3000/api/profile/'
 									+ $routeParams.profile_id,
 							data : {
-								"image_interval_sec" : $scope.profile.image_interval_sec,
-								"custom_image_widths" : $scope.profile.custom_image_widths,
-								"deinterlace_input" : $scope.profile.deinterlace_input,
-								"override_source" : $scope.profile.override_source,
-								"mezzanine_multipass_encoding" : $scope.profile.mezzanine_multipass_encoding
+								'profile' : $scope.profile
 							},
 							headers : {
 								'content-type' : 'application/json'
@@ -58,4 +53,3 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 
 			}
 		});
-
