@@ -6,6 +6,10 @@
 		<li><a href="#/providers/{{selectedProvider}}">{{provider_name}}</a></li>
 		<li class="active">Create Processing Profile</li>
 	</ol>
+	<alert id="alert" type="success" close="closeAlert()"
+		ng-show="confirmationAlert != ''">
+	<strong>{{confirmationAlert}}</strong></alert>
+
 	<div class="noborder panel panel-default">
 		<h3>Create Processing Profile</h3>
 		<table class="noborder table table-default"
@@ -48,8 +52,7 @@
 						<td><div class="col-lg-13">
 								<input id="name" name="name" type="text"
 									placeholder="Enter Profile Name" class="form-control input-md"
-									ng-model="profile.name" value="{{profile.name}}"
-									required>
+									ng-model="profile.name" value="{{profile.name}}" required>
 							</div></td>
 					</tr>
 					<tr>
