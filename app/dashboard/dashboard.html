@@ -24,23 +24,15 @@
 			<input type="checkbox" ng-click="checkAll()" ng-model="allChecked">
 		</div>
 		<div style="float: left; padding-left: 10px;">
-			<a href="" class="btn btn-primary" ng-show="singleCheck"
-				ng-click="makeDefault(selectedProfile)">MAKE DEFAULT</a> <a
-				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"
-				class="btn btn-default" ng-show="singleCheck">EDIT</a> <a
-				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}"
-				class="btn btn-default" ng-show="singleCheck">VIEW</a> <a href=""
-				class="btn btn-default"
-				ng-show="allChecked || singleCheck || multiCheck"
-				ng-click="removeProfiles()">REMOVE</a>
+			<a href="" class="btn btn-primary" ng-show="singleCheck" ng-click="makeDefault(selectedProfile)">MAKE DEFAULT</a> 
+			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"	class="btn btn-default" ng-show="singleCheck">EDIT</a> 
+			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}" class="btn btn-default" ng-show="singleCheck">VIEW</a> 
+			<a href="" class="btn btn-default" ng-show="allChecked || singleCheck || multiCheck" ng-click="removeProfiles()">REMOVE</a>
 		</div>
 		<div style="float: right;">
-			<a href="" class="btn btn-primary" popover-trigger="mouseenter"
-				popover="Feature Coming Soon!">NEW PROCESSING PROFILE</a> <a href=""
-				class="btn btn-default" popover-trigger="mouseenter"
-				popover="Feature Coming Soon!">IMPORT</a> <a
-				href="#/providers/{{selectedProvider}}/storageconfig"
-				class="btn btn-default">VIEW STORAGE LOCATION</a>
+			<a href="#/providers/{{selectedProvider}}/newprofile" class="btn btn-primary">NEW PROCESSING PROFILE</a> 
+			<a href="" class="btn btn-default" popover-trigger="mouseenter"	popover="Feature Coming Soon!">IMPORT</a> 
+			<a href="#/providers/{{selectedProvider}}/storageconfig" class="btn btn-default">VIEW STORAGE LOCATION</a>
 		</div>
 	</div>
 
@@ -68,16 +60,10 @@
 						style="font-style: italic;">(Default)</span></td>
 					<td>
 						<div class="buttonbar hideonhover">
-							<a href="" class="btn btn-primary"
-								ng-click="makeDefault(profile.profile_id)"
-								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
-								class="btn btn-default" ng-click="">EDIT</a> <a
-								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
-								class="btn btn-default" ng-click="">VIEW</a> <a href=""
-								class="btn btn-default"
-								ng-hide="{{profile.type==='default_video'}}"
-								ng-click="removeProfile(profile.profile_id)">REMOVE</a>
+							<a href="" class="btn btn-primary" ng-click="makeDefault(profile.profile_id)" ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> 
+							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit" class="btn btn-default" ng-click="">EDIT</a> 
+							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}" class="btn btn-default" ng-click="">VIEW</a> 
+							<a href="" class="btn btn-default" ng-hide="{{profile.type==='default_video'}}"	ng-click="removeProfile(profile.profile_id)">REMOVE</a>
 						</div>
 					</td>
 				</tr>

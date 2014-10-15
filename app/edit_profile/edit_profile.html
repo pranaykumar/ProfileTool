@@ -8,122 +8,122 @@
 	</ol>
 	<div class="noborder panel panel-default">
 		<h3>Edit Profile</h3>
-		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
-			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
-			href="" class="btn btn-primary" ng-click=""
-			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
-		<h3>Profile 2 to the provider</h3>
-		<table class="noborder table table-default"
-			style="width: 40%; border: 0px;">
-			<tr>
-				<td><span class="propertyLabel">Image interval sec</span></td>
-				<td><div class="col-lg-13">
-						<input id="name" name="name" type="number"
-							placeholder="Enter Numeric Value" class="form-control input-md"
-							ng-model="profile.image_interval_sec"
-							value="{{profile.image_interval_sec}}" required>
-					</div></td>
-			</tr>
-			<tr>
-				<td><span class="propertyLabel">Custom image widths</span></td>
-				<td><div class="col-lg-13">
-						<input id="name" name="name" type="text" placeholder="Name"
-							class="form-control input-md"
-							ng-model="profile.custom_image_widths"
-							value="{{profile.custom_image_widths}}" required>
-					</div></td>
-			</tr>
-			<tr>
-				<td colspan="2"><span class="propertyLabel">Streams</span></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div style="padding-left: 0px; padding-right: 0px;"
-						class="btn-group col-md-9" dropdown>
-						<button type="button" class="btn btn-default"
-							style="width: 315px; background: transparent; text-align: left;">
-							{{selectedStream.id}} - <strong>{{selectedStream.name}}</strong>
-							- {{selectedStream.stream_type}}
-						</button>
-						<button type="button" class="btn btn-default dropdown-toggle">
-							<span class="caret"></span> <span class="sr-only">Split
-								button!</span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li ng-repeat="stream in streams"><a href=""
-								ng-click="updateStreamOption($index)">{{stream.id}} - <strong>{{stream.name}}</strong>
-									- {{stream.stream_type}}
-							</a></li>
-						</ul>
-					</div>
-					<div style="float: right;">
-						<a href="#" class="btn btn-default" ng-click="">NEW</a> <a
-							href="#" class="btn btn-default" ng-click="">EDIT</a>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><span class="propertyLabel">Watermarks</span></td>
-			</tr>
-			<tr>
-				<td colspan="2"><textarea rows="3" cols="63"
-						style="resize: none;"></textarea>
-				<td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div style="float: left; padding-top: 2px;">
-						<span class="propertyLabel">Position</span>
-					</div>
-					<div class="radiogroup">
-						<input type="radio" name="mygroup" id="bottom" value="bottom">
-						<label for="bottom">Bottom</label>
-					</div>
-					<div class="radiogroup">
-						<input type="radio" name="mygroup" id="top" value="top"> <label
-							for="yes">Top</label>
-					</div>
-					<div class="radiogroup">
-						<input type="radio" name="mygroup" id="left" value="left">
-						<label for="no">Left</label>
-					</div>
-					<div class="radiogroup">
-						<input type="radio" name="mygroup" id="right" value="right">
-						<label for="yes">Right</label>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" ng-model="profile.deinterlace_input"
-					ng-true-value="1" ng-false-value="0"
-					ng-checked="profile.deinterlace_input == 1"> <label>Deinterlace
-						input</label></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" ng-model="profile.override_source"
-					ng-true-value="1" ng-false-value="0"
-					ng-checked="profile.override_source == 1"> <label>Override
-						Source</label></td>
-				<td><select id="type" name="type" class="form-control">
-						<option>Bottom</option>
-						<option>Top</option>
-						<option>Left</option>
-						<option>Right</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td><input type="checkbox"
-					ng-model="profile.mezzanine_multipass_encoding" ng-true-value="1"
-					ng-false-value="0"
-					ng-checked="profile.mezzanine_multipass_encoding == 1"> <label>Multipass
-						encoding</label></td>
-			</tr>
-		</table>
-	</div>
-	<div class="noborder panel panel-default">
-		<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
-			ng-click="" ng-hide="{{profile.type==='default_video'}}">CANCEL</a> <a
-			href="" class="btn btn-primary" ng-click="SaveProfile()"
-			ng-hide="{{profile.type==='default_video'}}">SAVE</a>
+		<form name="editProfileFrm">
+			<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+				ng-click="">CANCEL</a> <a href="" class="btn btn-primary"
+				ng-click="saveProfile()">SAVE</a>
+			<h3>Profile 2 to the provider</h3>
+			<table class="noborder table table-default"
+				style="width: 40%; border: 0px;">
+				<tr>
+					<td><span class="propertyLabel">Image interval sec</span></td>
+					<td><div class="col-lg-13">
+							<input id="name" name="name" type="number"
+								placeholder="Enter Numeric Value" class="form-control input-md"
+								ng-model="profile.image_interval_sec"
+								value="{{profile.image_interval_sec}}" required>
+						</div></td>
+				</tr>
+				<tr>
+					<td><span class="propertyLabel">Custom image widths</span></td>
+					<td><div class="col-lg-13">
+							<input id="name" name="name" type="text" placeholder="Name"
+								class="form-control input-md"
+								ng-model="profile.custom_image_widths"
+								value="{{profile.custom_image_widths}}" required>
+						</div></td>
+				</tr>
+				<tr>
+					<td colspan="2"><span class="propertyLabel">Streams</span></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left: 0px; padding-right: 0px;"
+							class="btn-group col-md-9" dropdown>
+							<button type="button" class="btn btn-default"
+								style="width: 315px; background: transparent; text-align: left;">
+								{{selectedStream.id}} - <strong>{{selectedStream.name}}</strong>
+								- {{selectedStream.stream_type}}
+							</button>
+							<button type="button" class="btn btn-default dropdown-toggle">
+								<span class="caret"></span> <span class="sr-only">Split
+									button!</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li ng-repeat="stream in streams"><a href=""
+									ng-click="updateStreamOption($index)">{{stream.id}} - <strong>{{stream.name}}</strong>
+										- {{stream.stream_type}}
+								</a></li>
+							</ul>
+						</div>
+						<div style="float: right;">
+							<a href="#" class="btn btn-default" ng-click="">NEW</a> <a
+								href="#" class="btn btn-default" ng-click="">EDIT</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><span class="propertyLabel">Watermarks</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea rows="3" cols="63"
+							style="resize: none;"></textarea>
+					<td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="float: left; padding-top: 2px;">
+							<span class="propertyLabel">Position</span>
+						</div>
+						<div class="radiogroup">
+							<input type="radio" name="mygroup" id="bottom" value="bottom">
+							<label for="bottom">Bottom</label>
+						</div>
+						<div class="radiogroup">
+							<input type="radio" name="mygroup" id="top" value="top">
+							<label for="yes">Top</label>
+						</div>
+						<div class="radiogroup">
+							<input type="radio" name="mygroup" id="left" value="left">
+							<label for="no">Left</label>
+						</div>
+						<div class="radiogroup">
+							<input type="radio" name="mygroup" id="right" value="right">
+							<label for="yes">Right</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"
+						ng-model="profile.deinterlace_input" ng-true-value="1"
+						ng-false-value="0" ng-checked="profile.deinterlace_input == 1">
+						<label>Deinterlace input</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" ng-model="profile.override_source"
+						ng-true-value="1" ng-false-value="0"
+						ng-checked="profile.override_source == 1"> <label>Override
+							Source</label></td>
+					<td><select id="type" name="type" class="form-control">
+							<option>Bottom</option>
+							<option>Top</option>
+							<option>Left</option>
+							<option>Right</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"
+						ng-model="profile.mezzanine_multipass_encoding" ng-true-value="1"
+						ng-false-value="0"
+						ng-checked="profile.mezzanine_multipass_encoding == 1"> <label>Multipass
+							encoding</label></td>
+				</tr>
+			</table>
+			<div class="noborder panel panel-default">
+				<a href="#/providers/{{selectedProvider}}" class="btn btn-default"
+					ng-click="">CANCEL</a> <a href="" class="btn btn-primary"
+					ng-click="saveProfile()">SAVE</a>
+			</div>
+		</form>
 	</div>
 </div>

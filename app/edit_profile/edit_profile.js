@@ -14,8 +14,6 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 .controller(
 		'editProfileController',
 		function($scope, $routeParams, $http, ProfileService) {
-			// $scope.streams = streams;
-			// $scope.profile = profile;
 			$scope.selectedProvider = $routeParams.provider_id;
 			$scope.selectedProfile = $routeParams.profile_id;
 
@@ -31,7 +29,7 @@ angular.module('profileApp.edit_profile', [ 'ngRoute' ])
 				$scope.selectedStream = $scope.streams[streamIndex];
 			};
 
-			$scope.SaveProfile = function() {
+			$scope.saveProfile = function() {
 				console.log($scope.profile.image_interval_sec);
 				console.log($scope.profile.deinterlace_input);
 				console.log($scope.profile.override_source);

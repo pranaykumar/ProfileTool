@@ -1,0 +1,15 @@
+{  
+   "id":null,
+   "profile_id":null,
+   "name":null,
+   "type":null,
+   "private":null,
+   "deinterlace_input":null,
+   "frame_rate":null,
+   "mezzanine_multipass_encoding":null,
+   "image_interval_sec":null,
+   "custom_image_widths":null,
+   "override_source":1,
+   "stream_type":null,
+   "streams":[]
+}

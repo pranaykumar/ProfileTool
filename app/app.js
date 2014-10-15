@@ -12,7 +12,8 @@ angular.module('profileApp', [
   'profileApp.dashboard',
   'profileApp.storageconfig',
   'profileApp.view_profile',
-  'profileApp.edit_profile'
+  'profileApp.edit_profile',
+  'profileApp.new_profile'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

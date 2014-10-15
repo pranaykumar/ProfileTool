@@ -199,9 +199,12 @@ th {
 	box-shadow: none;
 }
 
+
 table.noborder tbody tr td {
 	border: 0px;
+	padding-left: 0px;
 }
+
 
 .propertyLabel {
 	font-weight: bold;
