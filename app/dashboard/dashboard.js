@@ -13,7 +13,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 
 .controller(
 		'providersCntrl',
-		function($scope, $http, $routeParams, $route, ProfileService) {
+		function($scope, $http, $routeParams, $route, $modal, ProfileService) {
 			$scope.providerSrchStr = '';
 			$scope.selectedProvider = $routeParams.provider_id;
 			$scope.profileCount = 0;
@@ -183,8 +183,7 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 					
 					$scope.confirmationAlert = data[0].msg;
 					
-					// Refresh profile data on the page to reflect removed
-					// profile
+					// Refresh profile data on the page to reflect removed profile
 					ProfileService.getProfiles($routeParams.provider_id).then(
 							function(data) {
 								$scope.profiles = data;
@@ -201,4 +200,13 @@ angular.module('profileApp.dashboard', [ 'ngRoute' ])
 				});
 			};
 			
+			// Handles creation of modal window for storage config view
+			$scope.openStorageConfigModal = function (size) {
+				console.log('inside modal open function');
+			    var storageConfigmodalInstance = $modal.open({
+			      templateUrl: 'storage_config.html',
+			      controller: 'storageconfigCntrl',
+			      size: size
+			      });
+			    };			
 		});

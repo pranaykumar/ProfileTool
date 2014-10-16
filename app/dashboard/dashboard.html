@@ -14,6 +14,47 @@
 </div>
 </script>
 
+<script type="text/ng-template" id="storage_config.html">
+<div class="noborder panel panel-default">
+	<div class="modal-header">
+		<h3>Storage Configuration: {{provider_name}}</h3>
+	</div>
+<div class="modal-body">
+	<form name="storageConfigForm" class="form-horizontal">
+		<div class="form-group">
+			<label class="col-md-3 control-label" for="name"
+				style="text-align: left;">Name</label>
+			<div class="col-md-7">
+				<label class="col-md-7 control-label"
+					style="text-align: left; font-weight: normal;">{{storageConfigStub.name}}</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-3 control-label" for="type"
+				style="text-align: left;">Type</label>
+			<div class="col-md-7">
+				<label class="col-md-7 control-label"
+					style="text-align: left; font-weight: normal;">{{storageConfigStub.type}}</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 control-label" for="bucket"
+				style="text-align: left;">Bucket</label>
+			<div class="col-md-7">
+				<label class="col-md-7 control-label"
+					style="text-align: left; font-weight: normal;">{{storageConfigStub.bucket}}</label>
+			</div>
+		</div>
+		<div class="modal-footer" style="text-align: left; padding-left: 0px;border-top: 0px;">
+        	<button class="btn btn-primary" ng-click="ok()">OK</button>
+    	</div>
+	</form>
+</div>
+	
+</div>
+ </script>
+
 <div ng-controller="providersCntrl">
 	<ol class="breadcrumb" ng-controller="breadcrumbController">
 		<li><a href="#/providers">Back to Provider Search</a></li>
@@ -23,20 +64,29 @@
 		<div id="checkboxdiv">
 			<input type="checkbox" ng-click="checkAll()" ng-model="allChecked">
 		</div>
-		<div style="float: left; padding-left: 10px;">
-			<a href="" class="btn btn-primary" ng-show="singleCheck" ng-click="makeDefault(selectedProfile)">MAKE DEFAULT</a> 
-			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"	class="btn btn-default" ng-show="singleCheck">EDIT</a> 
-			<a href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}" class="btn btn-default" ng-show="singleCheck">VIEW</a> 
-			<a href="" class="btn btn-default" ng-show="allChecked || singleCheck || multiCheck" ng-click="removeProfiles()">REMOVE</a>
+		<div id="topButtonDiv">
+			<a href="" class="btn btn-primary" ng-show="singleCheck"
+				ng-click="makeDefault(selectedProfile)">MAKE DEFAULT</a> <a
+				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}/edit"
+				class="btn btn-default" ng-show="singleCheck">EDIT</a> <a
+				href="#/providers/{{selectedProvider}}/profile/{{selectedProfile}}"
+				class="btn btn-default" ng-show="singleCheck">VIEW</a> <a href=""
+				class="btn btn-default"
+				ng-show="allChecked || singleCheck || multiCheck"
+				ng-click="removeProfiles()">REMOVE</a>
 		</div>
 		<div style="float: right;">
-			<a href="#/providers/{{selectedProvider}}/newprofile" class="btn btn-primary">NEW PROCESSING PROFILE</a> 
-			<a href="" class="btn btn-default" popover-trigger="mouseenter"	popover="Feature Coming Soon!">IMPORT</a> 
-			<a href="#/providers/{{selectedProvider}}/storageconfig" class="btn btn-default">VIEW STORAGE LOCATION</a>
+			<a href="#/providers/{{selectedProvider}}/newprofile"
+				class="btn btn-primary">NEW PROCESSING PROFILE</a> <a href=""
+				class="btn btn-default" popover-trigger="mouseenter"
+				popover="Feature Coming Soon!">IMPORT</a> <a id= "viewStorageLoc" href=""
+				ng-click="openStorageConfigModal('')" class="btn btn-default">VIEW
+				STORAGE LOCATION</a>
 		</div>
 	</div>
 
-	  <alert type="success" close="closeAlert()" ng-show="confirmationAlert != ''"><strong>{{confirmationAlert}}</strong></alert>
+	<alert type="success" close="closeAlert()"
+		ng-show="confirmationAlert != ''"> <strong>{{confirmationAlert}}</strong></alert>
 
 
 	<div id="profileDtlPnl" class="panel panel-default">
@@ -60,10 +110,16 @@
 						style="font-style: italic;">(Default)</span></td>
 					<td>
 						<div class="buttonbar hideonhover">
-							<a href="" class="btn btn-primary" ng-click="makeDefault(profile.profile_id)" ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> 
-							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit" class="btn btn-default" ng-click="">EDIT</a> 
-							<a href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}" class="btn btn-default" ng-click="">VIEW</a> 
-							<a href="" class="btn btn-default" ng-hide="{{profile.type==='default_video'}}"	ng-click="removeProfile(profile.profile_id)">REMOVE</a>
+							<a href="" class="btn btn-primary"
+								ng-click="makeDefault(profile.profile_id)"
+								ng-hide="{{profile.type==='default_video'}}">MAKE DEFAULT</a> <a
+								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}/edit"
+								class="btn btn-default" ng-click="">EDIT</a> <a
+								href="#/providers/{{selectedProvider}}/profile/{{profile.profile_id}}"
+								class="btn btn-default" ng-click="">VIEW</a> <a href=""
+								class="btn btn-default"
+								ng-hide="{{profile.type==='default_video'}}"
+								ng-click="removeProfile(profile.profile_id)">REMOVE</a>
 						</div>
 					</td>
 				</tr>

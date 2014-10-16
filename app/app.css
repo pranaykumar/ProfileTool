@@ -79,9 +79,10 @@ footer {
 	color: white;
 }
 
-.gridclass{
+.gridclass {
 	margin-top: 10px;
 }
+
 .storageDiv {
 	float: right;
 	margin-right: 10px;
@@ -199,12 +200,10 @@ th {
 	box-shadow: none;
 }
 
-
 table.noborder tbody tr td {
 	border: 0px;
 	padding-left: 0px;
 }
-
 
 .propertyLabel {
 	font-weight: bold;
@@ -226,4 +225,13 @@ table tbody tr td.verticalmid {
 .radiogroup {
 	float: left;
 	padding-left: 30px;
+}
+
+.modal-content {
+	margin-top: 20%;
+}
+
+#topButtonDiv {
+	float: left;
+	padding-left: 10px;
 }

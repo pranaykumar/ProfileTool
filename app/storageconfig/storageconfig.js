@@ -11,20 +11,22 @@ angular.module('profileApp.storageconfig', [ 'ngRoute' ])
 	});
 } ])
 
-.controller('storageconfigCntrl', function($scope, $routeParams, ProviderService) {
+.controller('storageconfigCntrl', function($scope, $routeParams, $modalInstance, ProviderService) {
 	$scope.storageTypeStub = storageTypeStub;
 	$scope.storageConfigStub = storageConfigStub;
 	$scope.selectedProvider = $routeParams.provider_id;
 	$scope.selectedStorageOption = 'Default';
 
-	$scope.updateStorageOption = function(selectedStorageOption) {
-		$scope.selectedStorageOption = selectedStorageOption;
-	};
-
 	// Call to ProviderService to details of provider
 	ProviderService.getProvider($routeParams.provider_id).then(function(data) {
 		$scope.provider_name = data[0].name;
 	});
+	
+	//Handles closing of storage config modal window
+	 $scope.ok = function () {
+		    $modalInstance.close();
+		  };
+
 });
 
 var storageConfigStub = {
