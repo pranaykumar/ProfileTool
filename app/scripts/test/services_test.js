@@ -1,5 +1,6 @@
 "use strict";
-var IP = '172.21.248.61';
+var IP = 'helios.rest.api';
+
 describe("ProviderService of profileApp.services module", function() {
 	var mockProviderService, httpBackend;
 

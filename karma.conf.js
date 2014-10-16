@@ -6,7 +6,7 @@ module.exports = function(config) {
 		files : [ 'app/bower_components/angular/angular.js',
 				'app/bower_components/angular-route/angular-route.js',
 				'app/bower_components/angular-mocks/angular-mocks.js',
-				'app/scripts/*.js' ],
+				'app/scripts/*.js', 'app/scripts/test/*.js' ],
 
 		autoWatch : true,
 
@@ -14,13 +14,12 @@ module.exports = function(config) {
 		reporters : [ 'progress', 'coverage' ],
 
 		preprocessors : {
-			// source files, that you wanna generate coverage for
-			// do not include tests or libraries
-			// (these files will be instrumented by Istanbul)
+			// source files, that we want to generate coverage for
+			// excluding tests or libraries
 			'app/scripts/*.js' : [ 'coverage' ]
 		},
 
-		// optionally, configure the reporter
+		// Configure the reporter
 		coverageReporter : {
 			type : 'html',
 			dir : 'coverage/'

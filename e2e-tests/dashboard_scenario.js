@@ -14,16 +14,15 @@ describe(
 										.isDisplayed()).toBeTruthy();
 					});
 
-			/*it(
-					'should have provider ID displayed in breadcrumb as sent in URL',
+			it(
+					'should display Provider Name displayed in breadcrumb corresponding to the Provider ID in URL',
 					function() {
-						expect(
-								element(by.binding('selectedProvider'))
-										.getText()).toContain('111');
-					});*/
+						expect(element(by.binding('provider_name')).getText())
+								.toContain('ESPN');
+					});
 
 			it(
-					'should display links for make default/view/edit/remove for the selected provider',
+					'should display links for MAKE DEFAULT/VIEW/EDIT/REMOVE for the provider on mouse hover of a non-default profile row',
 					function() {
 						var profileRows = element.all(by.tagName('tr'));
 						profileRows.first().then(
@@ -36,23 +35,17 @@ describe(
 								});
 					});
 
-		/*	it(
-					'should display the buttons edit/view/remove/make defualt buttons on top once select one profile which is not default',
-					function() {
-						var clickOn = element(by.model('profile.checked'));
-						clickOn.click();
-						var topButtons = element.all(by.id('topButtonDiv'));
-						expect(topButtons.isDisplayed()).toBeTruthy();
-					});*/
-			it(
-					'Should display remove button on top once select all checkboxes',
-					function() {
-						var Topcheckbox = element(by.model('allChecked'));
-						Topcheckbox.click();
+			/*
+			 * it( 'should display the buttons edit/view/remove/make defualt
+			 * buttons on top once select one profile which is not default',
+			 * function() { var clickOn = element(by.model('profile.checked'));
+			 * clickOn.click(); var topButtons =
+			 * element.all(by.id('topButtonDiv'));
+			 * expect(topButtons.isDisplayed()).toBeTruthy(); });
+			 */
 
-					});
 			it(
-					'should display links for view/edit buttons only when mouse hovered on default profile',
+					'should only display links for VIEW and EDIT when mouse hovered on default profile',
 					function() {
 						var profileRows = element.all(by.tagName('tr'));
 						profileRows.first().then(
@@ -62,16 +55,17 @@ describe(
 									var list = element(by.css('.rowhover'))
 											.all(by.tagName('a'));
 
-								/*	expect(list == [ 'MAKE DEFAULT', 'EDIT',
-											'VIEW', 'REMOVE' ]);*/
+									/*
+									 * expect(list == [ 'MAKE DEFAULT', 'EDIT',
+									 * 'VIEW', 'REMOVE' ]);
+									 */
 									expect(list.count()).toEqual(4);
 								});
 
 					});
 
-			
 			it(
-					'should display breadcrumb when user navigates to provider dashboard (#/providers/111)',
+					'should display storage config information in a modal window when VIEW STORAGE CONFIGURTAION button in clicked',
 					function() {
 						element(by.id('viewStorageLoc')).click();
 
@@ -79,7 +73,45 @@ describe(
 								element(by.className('modal-dialog'))
 										.isDisplayed()).toBeTruthy();
 					});
-			
-			
-			
+
+			it(
+					'should display only REMOVE button on top links section when Check All checkbox is cheked',
+					function() {
+						var checkAll = element(by.model('allChecked'));
+						checkAll.click();
+						expect(
+								element(by.css('[ng-click="removeProfiles()"]')).isDisplayed)
+								.toBeTruthy();
+						/*
+						 * var items = element(by.id('topButtonDiv')).all(
+						 * by.tagName('a')); expect(items.count()).toEqual(4);
+						 */
+
+						// make sure REMOVE link is visible (4th Link)
+						element(by.id('topButtonDiv'))
+								.all(by.tagName('a'))
+								.filter(function(elem, index) {
+									return index === 3;
+								})
+								.then(
+										function(filteredElements) {
+											expect(
+													filteredElements[0].isDisplayed)
+													.toBeTruthy();
+										});
+
+						//make sure all other links in toButtonDiv are hidden
+						element(by.id('topButtonDiv')).all(by.tagName('a'))
+								.filter(function(elem, index) {
+									return index !== 3;
+								}).then(
+										function(filteredElements) {
+											expect(
+													filteredElements[0]
+															.isDisplayed())
+													.toBeFalsy();
+										});
+
+					});
+
 		});
