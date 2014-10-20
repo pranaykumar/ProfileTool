@@ -55,10 +55,6 @@ describe(
 									var list = element(by.css('.rowhover'))
 											.all(by.tagName('a'));
 
-									/*
-									 * expect(list == [ 'MAKE DEFAULT', 'EDIT',
-									 * 'VIEW', 'REMOVE' ]);
-									 */
 									expect(list.count()).toEqual(4);
 								});
 
@@ -82,10 +78,6 @@ describe(
 						expect(
 								element(by.css('[ng-click="removeProfiles()"]')).isDisplayed)
 								.toBeTruthy();
-						/*
-						 * var items = element(by.id('topButtonDiv')).all(
-						 * by.tagName('a')); expect(items.count()).toEqual(4);
-						 */
 
 						// make sure REMOVE link is visible (4th Link)
 						element(by.id('topButtonDiv'))
@@ -100,7 +92,7 @@ describe(
 													.toBeTruthy();
 										});
 
-						//make sure all other links in toButtonDiv are hidden
+						// make sure all other links in toButtonDiv are hidden
 						element(by.id('topButtonDiv')).all(by.tagName('a'))
 								.filter(function(elem, index) {
 									return index !== 3;
@@ -111,6 +103,23 @@ describe(
 															.isDisplayed())
 													.toBeFalsy();
 										});
+
+					});
+
+			it(
+					'should display the profile details on mouse hover of profile name',
+					function() {
+						var profileNameTag = element.all(
+								by.className('verticalmid')).first();
+						var profileSpan = profileNameTag
+								.all(by.tagName('span')).first();
+
+						profileSpan.click();
+
+						var popoverDiv = element.all(
+								by.className('ns-popover-list-theme')).first();
+
+						expect(popoverDiv.isDisplayed()).toBeTruthy();
 
 					});
 
